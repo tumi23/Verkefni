@@ -1,7 +1,11 @@
+#ifndef PERSON_H
+#define PERSON_H
+
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
+
 using namespace std;
 
 class Person {
@@ -19,3 +23,5 @@ public:
     string getbirth();
     string getdeath();
 };
+
+#endif // UI_H
