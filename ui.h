@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 #include "person.h"
 #include "data.h"
@@ -11,6 +12,7 @@
 using namespace std;
 
 struct UI {
+    bool firstNameCheck(Person i, Person o);
     bool Chooser(vector<Person>& Per, Data& d);
     void Starter(vector<Person>& Per, Data& d);
     void writer(vector<Person>& Per);

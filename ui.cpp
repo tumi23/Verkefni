@@ -10,6 +10,14 @@ void UI::writer(vector<Person>& Per)
     }
 }
 
+bool UI::firstNameCheck(Person i, Person o)
+{
+    if(i.getfname() < o.getfname())
+        return true;
+    else
+        return false;
+}
+
 void UI::insert(vector<Person>& Per, Data& d)
 {
     string fname, lname, sex, birth, death;
@@ -70,9 +78,11 @@ bool UI::Chooser(vector<Person>& Per, Data& d)
         case 4:
             srtornot = 1;
             input = GetChoice(srtornot);
+            string person1,person2;
             switch(input){
             case 1:
                 cout << "Sort By First name" << endl;
+                sort(Per.begin(), Per.end(), firstNameCheck);
                 break;
             case 2:
                 cout << "Sort By Last name" << endl;
