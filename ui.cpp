@@ -103,10 +103,10 @@ void UI::searchByName(vector<Person>& Per, string name)
 {
     string name1;
     int size = Per.size();
+    size_t x;
     for(int i = 0; i < size; i++)
     {
-        name1 = Per[i].getfname();
-        if(name == name1)
+        if(Per[i].getfname().find(name) != string::npos || Per[i].getlname().find(name) != string::npos)
         {
             Per[i].testwriter();
         }
