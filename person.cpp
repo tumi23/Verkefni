@@ -13,7 +13,7 @@ Person::Person(string firstname, string lastname, string tsex, string tbirth, st
     death = tdeath;
 }
 
-Person::testwriter()
+void Person::testwriter()
 {
     cout << "First Name: " << fname << "\nLast Name: " << lname << "\nSex: "<< sex << "\nBirth: "<< birth << "\nDeath: " << death << endl << endl;
 }

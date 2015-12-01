@@ -55,6 +55,7 @@ bool UI::Chooser(vector<Person>& Per, Data& d)
 {
     int srtornot = 0;
     bool breaker = false;
+    string name;
     int input = GetChoice(srtornot);
     switch (input) {
         case 1:
@@ -65,6 +66,8 @@ bool UI::Chooser(vector<Person>& Per, Data& d)
             break;
         case 3:
             cout << "Search By name/UI.SearchByName" << endl;
+            cin >> name;
+            searchByName(Per, name);
             break;
         case 4:
             cout << "Sort/UI.Sort";
@@ -94,4 +97,18 @@ bool UI::Chooser(vector<Person>& Per, Data& d)
             breaker = true;
   }
   return breaker;
+}
+
+void UI::searchByName(vector<Person>& Per, string name)
+{
+    string name1;
+    int size = Per.size();
+    for(int i = 0; i < size; i++)
+    {
+        name1 = Per[i].getfname();
+        if(name == name1)
+        {
+            Per[i].testwriter();
+        }
+    }
 }

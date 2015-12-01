@@ -11,7 +11,7 @@ class Person
 {
 public:
     Person(string firstname, string lastname, string tsex, string tbirth, string tdeath);
-    testwriter();
+    void testwriter();
     string getfname();
     string getlname();
     string getsex();

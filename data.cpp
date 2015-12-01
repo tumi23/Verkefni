@@ -12,7 +12,7 @@ Data::Data()
 void Data::load(vector<Person>& p)
 {
     p.clear();
-    ifstream file("c:/Users/Tumi/Desktop/test.csv");
+    ifstream file("listi.csv");
     string firstname, lastname, sex, birthday, death;
     while(file.good())
     {
@@ -29,7 +29,7 @@ void Data::load(vector<Person>& p)
 void Data::save(vector<Person>& p)
 {
     ofstream newFile;
-    newFile.open("c:/Users/Tumi/Desktop/test.csv");
+    newFile.open("listi.csv");
     int size = p.size(),checker;
     checker = 0;
     for(int i = 0; i < size; i++)

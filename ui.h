@@ -17,6 +17,8 @@ public:
     void Starter(vector<Person>& Per, Data& d);
     void writer(vector<Person>& Per);
     void insert(vector<Person>& Per, Data& d);
+    void searchByName(vector<Person>& Per, string name);
+
 };
 
 #endif // UI_H
