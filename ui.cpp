@@ -3,6 +3,32 @@
 #include "ui.h"
 using namespace std;
 
+void UI::writer(vector<Person>& Per)
+{
+    int size = Per.size();
+    for(int i = 0;i < size; i++)
+    {
+        Per[i].testwriter();
+    }
+}
+
+void UI::insert(vector<Person>& Per, Data& d)
+{
+    string fname, lname, sex, birth, death;
+    cout << "First name: ";
+    cin >> fname;
+    cout << "Last name: ";
+    cin >> lname;
+    cout << "Sex: ";
+    cin >> sex;
+    cout << "Date of birth: ";
+    cin >> birth;
+    cout << "Date of death: ";
+    cin >> death;
+    Per.push_back(Person(fname, lname, sex, birth, death));
+    d.save(Per);
+}
+
 int GetChoice(int srtornot)//Gives information on what the user wants to do
 {
     int input;
@@ -14,32 +40,28 @@ int GetChoice(int srtornot)//Gives information on what the user wants to do
     return input;
 }
 
-void UI::Starter(vector<Person>& Per)
+void UI::Starter(vector<Person>& Per, Data& d)
 {
     bool breaker = false;
     cout << "This is a Database to register and view\nFamous Computer people\n\n" << endl;
     while(breaker == false)
     {
-        breaker = Chooser(Per);
+        d.load(Per);
+        breaker = Chooser(Per,d);
     }
 }
 
-bool UI::Chooser(vector<Person>& Per)
+bool UI::Chooser(vector<Person>& Per, Data& d)
 {
     int srtornot = 0;
-    int size;
     bool breaker = false;
     int input = GetChoice(srtornot);
     switch (input) {
         case 1:
-            cout << "Add people/UI.Insert" << endl;
+            insert(Per,d);
             break;
         case 2:
-            size = Per.size();
-            for(int i = 0;i < size; i++)
-            {
-                Per[i].testwriter();
-            }
+            writer(Per);
             break;
         case 3:
             cout << "Search By name/UI.SearchByName" << endl;

@@ -17,3 +17,28 @@ Person::testwriter()
 {
     cout << "First Name: " << fname << "\nLast Name: " << lname << "\nSex: "<< sex << "\nBirth: "<< birth << "\nDeath: " << death << endl << endl;
 }
+
+string Person::getfname()
+{
+    return fname;
+}
+
+string Person::getlname()
+{
+    return lname;
+}
+
+string Person::getsex()
+{
+    return sex;
+}
+
+string Person::getbirth()
+{
+    return birth;
+}
+
+string Person::getdeath()
+{
+    return death;
+}

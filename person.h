@@ -12,6 +12,11 @@ class Person
 public:
     Person(string firstname, string lastname, string tsex, string tbirth, string tdeath);
     testwriter();
+    string getfname();
+    string getlname();
+    string getsex();
+    string getbirth();
+    string getdeath();
 private:
     string fname;
     string lname;

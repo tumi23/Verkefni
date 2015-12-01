@@ -11,8 +11,7 @@ Data::Data()
 
 void Data::load(vector<Person>& p)
 {
-    string text;
-    vector<string> info;
+    p.clear();
     ifstream file("c:/Users/Tumi/Desktop/test.csv");
     string firstname, lastname, sex, birthday, death;
     while(file.good())
@@ -27,16 +26,25 @@ void Data::load(vector<Person>& p)
     file.close();
 }
 
-//
-//void Data::save(vector<Person> p)
-//{
-//    ofstream newFile;
-//    string filename;
-//    newFile.open(filename);
-//    p.size() = size;
-//    for(int i = 0; i < size; i++)
-//    {
-//        newFile << p[i].firstname << " , " << p[i].lastname << ", " << p[i].sex << " , " << p[i].birthday << " , "
-//        << p[i].death;
-//    }
-//    newFile.close();
+void Data::save(vector<Person>& p)
+{
+    ofstream newFile;
+    newFile.open("c:/Users/Tumi/Desktop/test.csv");
+    int size = p.size(),checker;
+    checker = 0;
+    for(int i = 0; i < size; i++)
+    {
+        if(checker == 0)
+        {
+        newFile << p[i].getfname() << "," << p[i].getlname() << "," << p[i].getsex() << "," << p[i].getbirth() << ","
+        << p[i].getdeath();
+        checker++;
+        }
+        else
+        {
+            newFile << "," << p[i].getfname() << "," << p[i].getlname() << "," << p[i].getsex() << "," << p[i].getbirth() << ","
+            << p[i].getdeath();
+        }
+    }
+    newFile.close();
+}

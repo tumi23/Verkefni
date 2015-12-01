@@ -12,7 +12,5 @@ int main()
     vector<Person> Per;
     Data d;
     UI uid;
-    d.load(Per);
-    uid.Starter(Per);
-    //uid.Starter();
+    uid.Starter(Per,d);
 }

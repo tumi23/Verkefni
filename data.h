@@ -14,7 +14,7 @@ class Data
 {
 public:
     void load(vector<Person>& p);
-//    void save(vector<Person> p);
+    void save(vector<Person>& p);
     Data();
 private:
 
