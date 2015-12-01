@@ -1,5 +1,4 @@
 #include "ui.h"
-using namespace std;
 
 void UI::writer(vector<Person>& Per)
 {

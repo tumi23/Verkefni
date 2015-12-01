@@ -12,7 +12,6 @@ using namespace std;
 struct Data {
     void load(vector<Person>& p);
     void save(vector<Person>& p);
-    Data();
 };
 
 #endif // UI_H

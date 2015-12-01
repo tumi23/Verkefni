@@ -1,7 +1,5 @@
 #include "person.h"
 
-using namespace std;
-
 Person::Person(string firstname, string lastname, string tsex, string tbirth, string tdeath)
 {
     fname = firstname;
