@@ -1,10 +1,4 @@
 #include "data.h"
-using namespace std;
-
-Data::Data()
-{
-
-}
 
 void Data::load(vector<Person>& p)
 {
