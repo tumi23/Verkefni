@@ -33,9 +33,9 @@ int GetChoice(int srtornot)//Gives information on what the user wants to do
 {
     int input;
     if(srtornot == 0)
-        cout << "1)Add Person\n2)Display Persons\n3)Search by name\n4)Sort\n!Anything else stops the program!" << endl;
+        cout << "(1)Add Person\n(2)Display Persons\n(3)Search by name\n(4)Sort\n!Anything else stops the program!\n" << endl;
     else if(srtornot == 1)
-        cout << "Sort by:\n1)First name\n2)Last name\n3)Sex\n4)Date of birth\n5)Date of death" << endl;
+        cout << "Sort by:\n(1)First name\n(2)Last name\n(3)Sex\n(4)Date of birth\n(5)Date of death" << endl;
     cin >> input;
     return input;
 }
@@ -70,7 +70,6 @@ bool UI::Chooser(vector<Person>& Per, Data& d)
             searchByName(Per, name);
             break;
         case 4:
-            cout << "Sort/UI.Sort";
             srtornot = 1;
             input = GetChoice(srtornot);
             switch(input){
