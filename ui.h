@@ -12,7 +12,7 @@
 using namespace std;
 
 struct UI {
-    bool firstNameCheck(Person i, Person o);
+    bool firstNameCheck(string i, string o);
     bool Chooser(vector<Person>& Per, Data& d);
     void Starter(vector<Person>& Per, Data& d);
     void writer(vector<Person>& Per);

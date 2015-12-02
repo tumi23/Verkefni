@@ -1,4 +1,6 @@
 #include "ui.h"
+#include <algorithm>
+
 
 void UI::writer(vector<Person>& Per)
 {
@@ -9,9 +11,9 @@ void UI::writer(vector<Person>& Per)
     }
 }
 
-bool UI::firstNameCheck(Person i, Person o)
+bool UI::firstNameCheck(string i, string o)
 {
-    if(i.getfname() < o.getfname())
+    if(i > o)
         return true;
     else
         return false;
@@ -62,6 +64,12 @@ bool UI::Chooser(vector<Person>& Per, Data& d)
     bool breaker = false;
     string name;
     int input = GetChoice(srtornot);
+    vector<string> firstname;
+    vector<string> lastname;
+    vector<string> sexes;
+    vector<string> births;
+    vector<string> deaths;
+    int count = 0;
     switch (input) {
         case 1:
             insert(Per,d);
@@ -77,23 +85,95 @@ bool UI::Chooser(vector<Person>& Per, Data& d)
         case 4:
             srtornot = 1;
             input = GetChoice(srtornot);
-            string person1,person2;
             switch(input){
             case 1:
                 cout << "Sort By First name" << endl;
-                sort(Per.begin(), Per.end(), firstNameCheck);
+                for(int i = 0; i < Per.size(); i++)
+                {
+                    firstname.push_back(Per[i].getfname());
+                }
+                sort(firstname.begin(), firstname.end());
+                for(size_t i = 0; i < Per.size(); i++)
+                {
+                    for(size_t o = 0; o < Per.size(); o++)
+                    {
+                        if(Per[o].getfname() == firstname[i])
+                            Per[o].testwriter();
+                    }
+                }
                 break;
             case 2:
                 cout << "Sort By Last name" << endl;
+                for(int i = 0; i < Per.size(); i++)
+                {
+                    lastname.push_back(Per[i].getlname());
+                }
+                sort(lastname.begin(), lastname.end());
+                for(size_t i = 0; i < Per.size(); i++)
+                {
+                    for(size_t o = 0; o < Per.size(); o++)
+                    {
+                        if(Per[o].getlname() == lastname[i])
+                            Per[o].testwriter();
+                    }
+                }
                 break;
             case 3:
                 cout << "Sort By Sex" << endl;
+                for(int i = 0; i < Per.size(); i++)
+                {
+                    sexes.push_back(Per[i].getsex());
+                }
+                sort(sexes.begin(), sexes.end());
+                for(size_t i = 0; i < Per.size(); i++)
+                {
+                    for(size_t o = 0; o < Per.size(); o++)
+                    {
+                        if(Per[o].getsex() == sexes[i] && count != Per.size())
+                        {
+                            Per[o].testwriter();
+                            count++;
+                        }
+                    }
+                }
                 break;
             case 4:
                 cout << "Sort By Date of birth" << endl;
+                for(int i = 0; i < Per.size(); i++)
+                {
+                    births.push_back(Per[i].getbirth());
+                }
+                sort(births.begin(), births.end());
+                for(size_t i = 0; i < Per.size(); i++)
+                {
+                    for(size_t o = 0; o < Per.size(); o++)
+                    {
+                        if(Per[o].getbirth() == births[i] && count != Per.size())
+                        {
+                            Per[o].testwriter();
+                            count++;
+                        }
+                    }
+                }
                 break;
             case 5:
                 cout << "Sort By Date of death" << endl;
+                for(int i = 0; i < Per.size(); i++)
+                {
+                    deaths.push_back(Per[i].getdeath());
+                }
+                sort(deaths.begin(), deaths.end());
+                for(size_t i = 0; i < Per.size(); i++)
+                {
+                    for(size_t o = 0; o < Per.size(); o++)
+                    {
+                        if(Per[o].getdeath() == deaths[i] && count != Per.size())
+                        {
+                            Per[o].testwriter();
+                            count++;
+                        }
+                    }
+                }
                 break;
             default:
                 cout << "Wrong input!" << endl;
