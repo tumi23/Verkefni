@@ -11,27 +11,68 @@ void UI::writer(vector<Person>& Per)
     }
 }
 
-bool UI::firstNameCheck(string i, string o)
+bool UI::NameChecker(string fname, string lname,vector<Person>& Per)
 {
-    if(i > o)
-        return true;
-    else
-        return false;
+    bool checker = true;
+    string tfname, tlname;
+    for(int i = 0;i < Per.size();i++)
+    {
+        tfname = Per[i].getfname();
+        tlname = Per[i].getlname();
+        if(tfname == fname && tlname == lname)
+        {
+            checker = false;
+            cout << "You can't put someone who is already in the database, Please try again." << endl;
+        }
+        else
+            continue;
+    }
+    return checker;
 }
 
 void UI::insert(vector<Person>& Per, Data& d)
 {
     string fname, lname, sex, birth, death;
-    cout << "First name: ";
-    cin >> fname;
-    cout << "Last name: ";
-    cin >> lname;
-    cout << "Sex: ";
-    cin >> sex;
-    cout << "Date of birth: ";
-    cin >> birth;
-    cout << "Date of death: ";
-    cin >> death;
+    bool breaker;
+    breaker = false;
+    while(breaker == false)
+    {
+        cout << "First name: ";
+        cin >> fname;
+        cout << "Last name: ";
+        cin >> lname;
+        breaker = NameChecker(fname,lname,Per);
+    }
+    breaker = false;
+    while(breaker == false)
+    {
+        cout << "Sex: ";
+        cin >> sex;
+        if(sex == "M" || sex == "F" || sex == "m" || sex == "f")
+        {
+            breaker = true;
+        }
+        else
+        {
+            cout << "You can only be F(Female) or M(Male), please try again." << endl;
+        }
+    }
+    breaker = false;
+    while(breaker == false)
+    {
+        cout << "Date of birth: ";
+        cin >> birth;
+        cout << "Date of death: ";
+        cin >> death;
+        if(birth < death)
+        {
+            breaker = true;
+        }
+        else
+        {
+            cout << "You cant be dead before you're born, please try again." << endl;
+        }
+    }
     Per.push_back(Person(fname, lname, sex, birth, death));
     d.save(Per);
 }
