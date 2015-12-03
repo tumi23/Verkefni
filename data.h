@@ -6,12 +6,15 @@
 #include <vector>
 
 #include "person.h"
+#include "Computers.h"
 
 using namespace std;
 
 struct Data {
-    void load(vector<Person>& p);
-    void save(vector<Person>& p);
+    void personLoad(vector<Person>& p);
+    void personSave(vector<Person>& p);
+    void computerLoad(vector<Computers>& Comp);
+    void computerSave(vector<Computers>& Comp);
 };
 
 #endif // UI_H

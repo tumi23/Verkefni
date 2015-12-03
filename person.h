@@ -15,7 +15,7 @@ class Person {
     string death;
 public:
     Person(string firstname, string lastname, string tsex, string tbirth, string tdeath);
-    void testwriter();
+    friend ostream& operator<<(ostream &out, const Person &x);
     string getfname();
     string getlname();
     string getsex();

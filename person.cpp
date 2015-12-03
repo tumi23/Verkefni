@@ -9,9 +9,10 @@ Person::Person(string firstname, string lastname, string tsex, string tbirth, st
     death = tdeath;
 }
 
-void Person::testwriter()
+ostream& operator<<(ostream &out, const Person &x)
 {
-    cout << "First Name: " << fname << "\nLast Name: " << lname << "\nSex: "<< sex << "\nBirth: "<< birth << "\nDeath: " << death << endl << endl;
+    out << "First Name: " << x.fname << "\nLast Name: " << x.lname << "\nSex: "<< x.sex << "\nBirth: "<< x.birth << "\nDeath: " << x.death << endl << endl;
+    return out;
 }
 
 string Person::getfname()

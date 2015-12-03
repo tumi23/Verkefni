@@ -1,9 +1,9 @@
 #include "data.h"
 
-void Data::load(vector<Person>& p)
+void Data::personLoad(vector<Person>& p)
 {
     p.clear();
-    ifstream file("listi.csv");
+    ifstream file("personlist.csv");
     string firstname, lastname, sex, birthday, death;
     while(file.good())
     {
@@ -17,10 +17,10 @@ void Data::load(vector<Person>& p)
     file.close();
 }
 
-void Data::save(vector<Person>& p)
+void Data::personSave(vector<Person>& p)
 {
     ofstream newFile;
-    newFile.open("listi.csv");
+    newFile.open("personlist.csv");
     int size = p.size(),checker;
     checker = 0;
     for(int i = 0; i < size; i++)
@@ -35,6 +35,43 @@ void Data::save(vector<Person>& p)
         {
             newFile << "," << p[i].getfname() << "," << p[i].getlname() << "," << p[i].getsex() << "," << p[i].getbirth() << ","
             << p[i].getdeath();
+        }
+    }
+    newFile.close();
+}
+
+void computerLoad(vector<Computers>& Comp)
+{
+    Comp.clear();
+    ifstream file("computerlist.csv");
+    string name, yearMade, type, made;
+    while(file.good())
+    {
+        getline(file, name, ',');
+        getline(file, yearMade, ',');
+        getline(file, type, ',');
+        getline(file, made, ',');
+        Comp.push_back(Computers(name, yearMade, type, made));
+    }
+    file.close();
+}
+
+void computerSave(vector<Computers>& Comp)
+{
+    ofstream newFile;
+    newFile.open("computerlist.csv");
+    int size = Comp.size(),checker;
+    checker = 0;
+    for(int i = 0; i < size; i++)
+    {
+        if(checker == 0)
+        {
+        newFile << Comp[i].getname() << "," << Comp[i].getyearMade() << "," << Comp[i].gettype() << "," << Comp[i].getmade();
+        checker++;
+        }
+        else
+        {
+            newFile << "," << Comp[i].getname() << "," << Comp[i].getyearMade() << "," << Comp[i].gettype() << "," << Comp[i].getmade();
         }
     }
     newFile.close();
