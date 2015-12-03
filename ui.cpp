@@ -117,7 +117,7 @@ void computerStarter(vector<Computers>& Comp, Data& d)
     while(breaker == false)
     {
         d.computerLoad(Comp);
-        breaker = computerChooser(Comp,d);
+//        breaker = computerChooser(Comp,d);
     }
 }
 
@@ -135,7 +135,7 @@ bool UI::personChooser(vector<Person>& Per, Data& d)
     int count = 0;
     switch (input) {
         case 1:
-            insert(Per,d);
+            personInsert(Per,d);
             break;
         case 2:
             writer(Per);
@@ -143,11 +143,11 @@ bool UI::personChooser(vector<Person>& Per, Data& d)
         case 3:
             cout << "Search By name/UI.SearchByName" << endl;
             cin >> name;
-            searchByName(Per, name);
+            personsearchByName(Per, name);
             break;
         case 4:
             srtornot = 1;
-            input = GetChoice(srtornot);
+            input = GetPersonChoice(srtornot);
             switch(input){
             case 1:
                 cout << "Sort By First name" << endl;
@@ -161,7 +161,7 @@ bool UI::personChooser(vector<Person>& Per, Data& d)
                     for(size_t o = 0; o < Per.size(); o++)
                     {
                         if(Per[o].getfname() == firstname[i])
-                            Per[o].testwriter();
+                            cout << Per[o];
                     }
                 }
                 break;
@@ -177,7 +177,7 @@ bool UI::personChooser(vector<Person>& Per, Data& d)
                     for(size_t o = 0; o < Per.size(); o++)
                     {
                         if(Per[o].getlname() == lastname[i])
-                            Per[o].testwriter();
+                            cout << Per[o];
                     }
                 }
                 break;
@@ -194,7 +194,7 @@ bool UI::personChooser(vector<Person>& Per, Data& d)
                     {
                         if(Per[o].getsex() == sexes[i] && count != Per.size())
                         {
-                            Per[o].testwriter();
+                            cout << Per[o];
                             count++;
                         }
                     }
@@ -213,7 +213,7 @@ bool UI::personChooser(vector<Person>& Per, Data& d)
                     {
                         if(Per[o].getbirth() == births[i] && count != Per.size())
                         {
-                            Per[o].testwriter();
+                            cout << Per[o];
                             count++;
                         }
                     }
@@ -232,7 +232,7 @@ bool UI::personChooser(vector<Person>& Per, Data& d)
                     {
                         if(Per[o].getdeath() == deaths[i] && count != Per.size())
                         {
-                            Per[o].testwriter();
+                            cout << Per[o];
                             count++;
                         }
                     }
@@ -252,8 +252,8 @@ bool UI::computerChooser(vector<Computers>& Comp, Data& d)
 {
     int srtornot = 0;
     bool breaker = false;
-    string name;
-    int input = GetChoice(srtornot);
+    string name1;
+    int input = GetComputerChoice(srtornot);
     vector<string> name;
     vector<string> yearMade;
     vector<string> type;
@@ -264,106 +264,91 @@ bool UI::computerChooser(vector<Computers>& Comp, Data& d)
             computerInsert(Comp, d);
             break;
         case 2:
-            writer(Per);
+            for(size_t i = 0; i < Comp.size(); i++)
+            {
+                cout << Comp[i];
+            }
             break;
         case 3:
             cout << "Search By name/UI.SearchByName" << endl;
-            cin >> name;
-            searchByName(Per, name);
+            cin >> name1;
+            computersearchByName(Comp, name1);
             break;
         case 4:
             srtornot = 1;
-            input = GetChoice(srtornot);
+            input = GetComputerChoice(srtornot);
             switch(input){
             case 1:
                 cout << "Sort By First name" << endl;
-                for(int i = 0; i < Per.size(); i++)
+                for(int i = 0; i < Comp.size(); i++)
                 {
-                    firstname.push_back(Per[i].getfname());
+                    name.push_back(Comp[i].getname());
                 }
-                sort(firstname.begin(), firstname.end());
-                for(size_t i = 0; i < Per.size(); i++)
+                sort(name.begin(), name.end());
+                for(size_t i = 0; i < Comp.size(); i++)
                 {
-                    for(size_t o = 0; o < Per.size(); o++)
+                    for(size_t o = 0; o < Comp.size(); o++)
                     {
-                        if(Per[o].getfname() == firstname[i])
-                            Per[o].testwriter();
+                        if(Comp[o].getname() == name[i])
+                            cout << Comp[o];
                     }
                 }
                 break;
             case 2:
-                cout << "Sort By Last name" << endl;
-                for(int i = 0; i < Per.size(); i++)
+                cout << "Sort By Year Made" << endl;
+                for(int i = 0; i < Comp.size(); i++)
                 {
-                    lastname.push_back(Per[i].getlname());
+                    yearMade.push_back(Comp[i].getyearMade());
                 }
-                sort(lastname.begin(), lastname.end());
-                for(size_t i = 0; i < Per.size(); i++)
+                sort(yearMade.begin(), yearMade.end());
+                for(size_t i = 0; i < Comp.size(); i++)
                 {
-                    for(size_t o = 0; o < Per.size(); o++)
+                    for(size_t o = 0; o < Comp.size(); o++)
                     {
-                        if(Per[o].getlname() == lastname[i])
-                            Per[o].testwriter();
+                        if(Comp[o].getname() == name[i])
+                            cout << Comp[o];
                     }
                 }
                 break;
             case 3:
-                cout << "Sort By Sex" << endl;
-                for(int i = 0; i < Per.size(); i++)
+                cout << "Sort By Type" << endl;
+                for(int i = 0; i < Comp.size(); i++)
                 {
-                    sexes.push_back(Per[i].getsex());
+                    type.push_back(Comp[i].gettype());
                 }
-                sort(sexes.begin(), sexes.end());
-                for(size_t i = 0; i < Per.size(); i++)
+                sort(type.begin(), type.end());
+                for(size_t i = 0; i < Comp.size(); i++)
                 {
-                    for(size_t o = 0; o < Per.size(); o++)
+                    for(size_t o = 0; o < Comp.size(); o++)
                     {
-                        if(Per[o].getsex() == sexes[i] && count != Per.size())
+                        if(Comp[o].gettype() == type[i] && count != Comp.size())
                         {
-                            Per[o].testwriter();
+                            cout << Comp[o];
                             count++;
                         }
                     }
                 }
                 break;
             case 4:
-                cout << "Sort By Date of birth" << endl;
-                for(int i = 0; i < Per.size(); i++)
+                cout << "Sort By if it has been made or not" << endl;
+                for(int i = 0; i < Comp.size(); i++)
                 {
-                    births.push_back(Per[i].getbirth());
+                    made.push_back(Comp[i].getmade());
                 }
-                sort(births.begin(), births.end());
-                for(size_t i = 0; i < Per.size(); i++)
+                sort(made.begin(), made.end());
+                for(size_t i = 0; i < Comp.size(); i++)
                 {
-                    for(size_t o = 0; o < Per.size(); o++)
+                    for(size_t o = 0; o < Comp.size(); o++)
                     {
-                        if(Per[o].getbirth() == births[i] && count != Per.size())
+                        if(Comp[o].getmade() == made[i] && count != Comp.size())
                         {
-                            Per[o].testwriter();
+                            cout << Comp[o];
                             count++;
                         }
                     }
                 }
                 break;
-            case 5:
-                cout << "Sort By Date of death" << endl;
-                for(int i = 0; i < Per.size(); i++)
-                {
-                    deaths.push_back(Per[i].getdeath());
-                }
-                sort(deaths.begin(), deaths.end());
-                for(size_t i = 0; i < Per.size(); i++)
-                {
-                    for(size_t o = 0; o < Per.size(); o++)
-                    {
-                        if(Per[o].getdeath() == deaths[i] && count != Per.size())
-                        {
-                            Per[o].testwriter();
-                            count++;
-                        }
-                    }
-                }
-                break;
+
             default:
                 cout << "Wrong input!" << endl;
             }
@@ -374,7 +359,7 @@ bool UI::computerChooser(vector<Computers>& Comp, Data& d)
   return breaker;
 }
 
-void UI::searchByName(vector<Person>& Per, string name)
+void UI::personsearchByName(vector<Person>& Per, string name)
 {
     string name1;
     int size = Per.size();
@@ -383,7 +368,7 @@ void UI::searchByName(vector<Person>& Per, string name)
     {
         if(Per[i].getfname().find(name) != string::npos || Per[i].getlname().find(name) != string::npos)
         {
-            Per[i].testwriter();
+            cout << Per[i];
         }
     }
 }
@@ -405,4 +390,16 @@ void UI::computerInsert(vector<Computers>& Comp, Data& d)
     d.computerSave(Comp);
 }
 
-
+void UI::computersearchByName(vector<Computers>& Comp, string name)
+{
+    string name1;
+    int size = Comp.size();
+    size_t x;
+    for(int i = 0; i < size; i++)
+    {
+        if(Comp[i].getname().find(name) != string::npos)
+        {
+            cout << Comp[i];
+        }
+    }
+}
