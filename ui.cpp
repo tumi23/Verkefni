@@ -129,74 +129,19 @@ bool UI::computerChooser(vector<Computers>& Comp, Data& d,computerWorkLayer& com
             input = GetComputerChoice(srtornot);
             switch(input){
             case 1:
-                cout << "Sort By First name" << endl;
-                for(int i = 0; i < Comp.size(); i++)
-                {
-                    name.push_back(Comp[i].getname());
-                }
-                sort(name.begin(), name.end());
-                for(size_t i = 0; i < Comp.size(); i++)
-                {
-                    for(size_t o = 0; o < Comp.size(); o++)
-                    {
-                        if(Comp[o].getname() == name[i])
-                            cout << Comp[o];
-                    }
-                }
+                com.sortName(Comp);
                 break;
             case 2:
                 cout << "Sort By Year Made" << endl;
-                for(int i = 0; i < Comp.size(); i++)
-                {
-                    yearMade.push_back(Comp[i].getyearMade());
-                }
-                sort(yearMade.begin(), yearMade.end());
-                for(size_t i = 0; i < Comp.size(); i++)
-                {
-                    for(size_t o = 0; o < Comp.size(); o++)
-                    {
-                        if(Comp[o].getname() == name[i])
-                            cout << Comp[o];
-                    }
-                }
+                com.sortYearMade(Comp);
                 break;
             case 3:
                 cout << "Sort By Type" << endl;
-                for(int i = 0; i < Comp.size(); i++)
-                {
-                    type.push_back(Comp[i].gettype());
-                }
-                sort(type.begin(), type.end());
-                for(size_t i = 0; i < Comp.size(); i++)
-                {
-                    for(size_t o = 0; o < Comp.size(); o++)
-                    {
-                        if(Comp[o].gettype() == type[i] && count != Comp.size())
-                        {
-                            cout << Comp[o];
-                            count++;
-                        }
-                    }
-                }
+                com.sortType(Comp);
                 break;
             case 4:
                 cout << "Sort By if it has been made or not" << endl;
-                for(int i = 0; i < Comp.size(); i++)
-                {
-                    made.push_back(Comp[i].getmade());
-                }
-                sort(made.begin(), made.end());
-                for(size_t i = 0; i < Comp.size(); i++)
-                {
-                    for(size_t o = 0; o < Comp.size(); o++)
-                    {
-                        if(Comp[o].getmade() == made[i] && count != Comp.size())
-                        {
-                            cout << Comp[o];
-                            count++;
-                        }
-                    }
-                }
+                com.sortMade(Comp);
                 break;
 
             default:
