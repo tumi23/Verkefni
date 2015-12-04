@@ -12,14 +12,14 @@ int main()
     vector<Computers> Comp;
     Data d;
     UI uid;
-    PersonWorkLayer dom;
+    PersonWorkLayer pom;
     computerWorkLayer com;
     int x;
     cout << question;
     cin >> x;
     if(x == 0)
     {
-        uid.personStarter(Per,d,dom);
+        uid.personStarter(Per,d,pom);
     }
     else if(x == 1)
     {

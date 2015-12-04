@@ -1,5 +1,4 @@
 #include "personworklayer.h"
-
 bool PersonWorkLayer::NameChecker(string fname, string lname, vector<Person>& Per)
 {
     bool checker = true;
@@ -84,6 +83,7 @@ void PersonWorkLayer::searchByName(vector<Person>& Per)
 void PersonWorkLayer::sortName(vector<Person>& Per)
 {
     vector<string> firstname;
+    int count = 0;
     for(int i = 0; i < Per.size(); i++)
     {
         firstname.push_back(Per[i].getfname());
@@ -101,6 +101,8 @@ void PersonWorkLayer::sortName(vector<Person>& Per)
 
 void PersonWorkLayer::sortLastName(vector<Person>& Per)
 {
+    vector<string> lastname;
+    int count = 0;
     for(int i = 0; i < Per.size(); i++)
     {
         lastname.push_back(Per[i].getlname());
@@ -118,6 +120,8 @@ void PersonWorkLayer::sortLastName(vector<Person>& Per)
 
 void PersonWorkLayer::sortSex(vector<Person>& Per)
 {
+    vector<string> sexes;
+    int count = 0;
     for(int i = 0; i < Per.size(); i++)
     {
         sexes.push_back(Per[i].getsex());
@@ -138,6 +142,8 @@ void PersonWorkLayer::sortSex(vector<Person>& Per)
 
 void PersonWorkLayer::sortBirth(vector<Person>& Per)
 {
+    vector<string> births;
+    int count = 0;
     for(int i = 0; i < Per.size(); i++)
     {
         births.push_back(Per[i].getbirth());
@@ -158,6 +164,8 @@ void PersonWorkLayer::sortBirth(vector<Person>& Per)
 
 void PersonWorkLayer::sortDeath(vector<Person>& Per)
 {
+    vector<string> deaths;
+    int count = 0;
     for(int i = 0; i < Per.size(); i++)
     {
         deaths.push_back(Per[i].getdeath());

@@ -3,6 +3,7 @@
 
 #include "person.h"
 #include "data.h"
+#include <algorithm>
 
 struct PersonWorkLayer {
     void insert(Data& d, vector<Person>& Per);
