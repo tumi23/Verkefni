@@ -89,3 +89,21 @@ void PersonWorkLayer::searchByName(vector<Person>& Per)
         }
     }
 }
+
+void PersonWorkLayer::sortName(vector<Person>& Per)
+{
+    vector<string> firstname;
+    for(int i = 0; i < Per.size(); i++)
+    {
+        firstname.push_back(Per[i].getfname());
+    }
+    sort(firstname.begin(), firstname.end());
+    for(size_t i = 0; i < Per.size(); i++)
+    {
+        for(size_t o = 0; o < Per.size(); o++)
+        {
+            if(Per[o].getfname() == firstname[i])
+            cout << Per[o];
+        }
+    }
+}
