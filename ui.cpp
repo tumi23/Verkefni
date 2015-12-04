@@ -1,82 +1,6 @@
 #include "ui.h"
 #include <algorithm>
 
-
-void UI::writer(vector<Person>& Per)
-{
-    int size = Per.size();
-    for(int i = 0;i < size; i++)
-    {
-        cout << Per[i];
-    }
-}
-
-bool UI::NameChecker(string fname, string lname,vector<Person>& Per)
-{
-    bool checker = true;
-    string tfname, tlname;
-    for(int i = 0;i < Per.size();i++)
-    {
-        tfname = Per[i].getfname();
-        tlname = Per[i].getlname();
-        if(tfname == fname && tlname == lname)
-        {
-            checker = false;
-            cout << "You can't put someone who is already in the database, Please try again." << endl;
-        }
-        else
-            continue;
-    }
-    return checker;
-}
-
-void UI::personInsert(vector<Person>& Per, Data& d)
-{
-    string fname, lname, sex, birth, death;
-    bool breaker;
-    breaker = false;
-    while(breaker == false)
-    {
-        cout << "First name: ";
-        cin >> fname;
-        cout << "Last name: ";
-        cin >> lname;
-        breaker = NameChecker(fname,lname,Per);
-    }
-    breaker = false;
-    while(breaker == false)
-    {
-        cout << "Sex: ";
-        cin >> sex;
-        if(sex == "M" || sex == "F" || sex == "m" || sex == "f")
-        {
-            breaker = true;
-        }
-        else
-        {
-            cout << "You can only be F(Female) or M(Male), please try again." << endl;
-        }
-    }
-    breaker = false;
-    while(breaker == false)
-    {
-        cout << "Date of birth: ";
-        cin >> birth;
-        cout << "Date of death: ";
-        cin >> death;
-        if(birth < death)
-        {
-            breaker = true;
-        }
-        else
-        {
-            cout << "You cant be dead before you're born, please try again." << endl;
-        }
-    }
-    Per.push_back(Person(fname, lname, sex, birth, death));
-    d.personSave(Per);
-}
-
 int GetPersonChoice(int srtornot)//Gives information on what the user wants to do
 {
     int input;
@@ -99,14 +23,14 @@ int GetComputerChoice(int srtornot)
     return input;
 }
 
-void UI::personStarter(vector<Person>& Per, Data& d)
+void UI::personStarter(vector<Person>& Per, Data& d, PersonWorkLayer& dom)
 {
     bool breaker = false;
     cout << "This is a Database to register and view\nFamous Computer people\n\n" << endl;
     while(breaker == false)
     {
         d.personLoad(Per);
-        breaker = personChooser(Per,d);
+        breaker = personChooser(Per,d,dom);
     }
 }
 
@@ -121,7 +45,7 @@ void computerStarter(vector<Computers>& Comp, Data& d)
     }
 }
 
-bool UI::personChooser(vector<Person>& Per, Data& d)
+bool UI::personChooser(vector<Person>& Per, Data& d,PersonWorkLayer& dom)
 {
     int srtornot = 0;
     bool breaker = false;
@@ -135,15 +59,13 @@ bool UI::personChooser(vector<Person>& Per, Data& d)
     int count = 0;
     switch (input) {
         case 1:
-            personInsert(Per,d);
+            dom.insert(d,Per);
             break;
         case 2:
-            writer(Per);
+            dom.writer(Per);
             break;
         case 3:
-            cout << "Search By name/UI.SearchByName" << endl;
-            cin >> name;
-            personsearchByName(Per, name);
+            dom.searchByName(Per);
             break;
         case 4:
             srtornot = 1;
@@ -357,20 +279,6 @@ bool UI::computerChooser(vector<Computers>& Comp, Data& d)
             breaker = true;
   }
   return breaker;
-}
-
-void UI::personsearchByName(vector<Person>& Per, string name)
-{
-    string name1;
-    int size = Per.size();
-    size_t x;
-    for(int i = 0; i < size; i++)
-    {
-        if(Per[i].getfname().find(name) != string::npos || Per[i].getlname().find(name) != string::npos)
-        {
-            cout << Per[i];
-        }
-    }
 }
 
 void UI::computerInsert(vector<Computers>& Comp, Data& d)
