@@ -34,14 +34,14 @@ void UI::personStarter(vector<Person>& Per, Data& d, PersonWorkLayer& dom)
     }
 }
 
-void computerStarter(vector<Computers>& Comp, Data& d)
+void computerStarter(vector<Computers>& Comp, Data& d,computerWorkLayer& com)
 {
     bool breaker = false;
     cout << "This is a Database to register and view Computers" << endl;
     while(breaker == false)
     {
 //        d.computerLoad(Comp);
-//        breaker = computerChooser(Comp,d);
+//        breaker = computerChooser(Comp,d,com);
     }
 }
 
@@ -170,7 +170,7 @@ bool UI::personChooser(vector<Person>& Per, Data& d,PersonWorkLayer& dom)
   return breaker;
 }
 
-bool UI::computerChooser(vector<Computers>& Comp, Data& d)
+bool UI::computerChooser(vector<Computers>& Comp, Data& d,computerWorkLayer& com)
 {
     int srtornot = 0;
     bool breaker = false;
@@ -183,7 +183,7 @@ bool UI::computerChooser(vector<Computers>& Comp, Data& d)
     int count = 0;
     switch (input) {
         case 1:
-            computerInsert(Comp, d);
+            com.insert(Comp, d);
             break;
         case 2:
             for(size_t i = 0; i < Comp.size(); i++)
@@ -192,9 +192,7 @@ bool UI::computerChooser(vector<Computers>& Comp, Data& d)
             }
             break;
         case 3:
-            cout << "Search By name/UI.SearchByName" << endl;
-            cin >> name1;
-            computersearchByName(Comp, name1);
+            com.searchByName(Comp);
             break;
         case 4:
             srtornot = 1;
@@ -279,35 +277,4 @@ bool UI::computerChooser(vector<Computers>& Comp, Data& d)
             breaker = true;
   }
   return breaker;
-}
-
-void UI::computerInsert(vector<Computers>& Comp, Data& d)
-{
-    string name, yearMade, type, made;
-    bool breaker;
-    breaker = false;
-    cout << "Name: ";
-    cin >> name;
-    cout << endl << "Year made: ";
-    cin >> yearMade;
-    cout << endl << "Type: ";
-    cin >> type;
-    cout << "Was it made? (Answer with yes or no)";
-    cin >> made;
-    Comp.push_back(Computers(name, yearMade, type, made));
-//    d.computerSave(Comp);
-}
-
-void UI::computersearchByName(vector<Computers>& Comp, string name)
-{
-    string name1;
-    int size = Comp.size();
-    size_t x;
-    for(int i = 0; i < size; i++)
-    {
-        if(Comp[i].getname().find(name) != string::npos)
-        {
-            cout << Comp[i];
-        }
-    }
 }
