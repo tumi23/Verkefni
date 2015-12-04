@@ -98,3 +98,80 @@ void PersonWorkLayer::sortName(vector<Person>& Per)
         }
     }
 }
+
+void PersonWorkLayer::sortLastName(vector<Person>& Per)
+{
+    for(int i = 0; i < Per.size(); i++)
+    {
+        lastname.push_back(Per[i].getlname());
+    }
+    sort(lastname.begin(), lastname.end());
+    for(size_t i = 0; i < Per.size(); i++)
+    {
+        for(size_t o = 0; o < Per.size(); o++)
+        {
+            if(Per[o].getlname() == lastname[i])
+            cout << Per[o];
+        }
+    }
+}
+
+void PersonWorkLayer::sortSex(vector<Person>& Per)
+{
+    for(int i = 0; i < Per.size(); i++)
+    {
+        sexes.push_back(Per[i].getsex());
+    }
+    sort(sexes.begin(), sexes.end());
+    for(size_t i = 0; i < Per.size(); i++)
+    {
+        for(size_t o = 0; o < Per.size(); o++)
+        {
+            if(Per[o].getsex() == sexes[i] && count != Per.size())
+            {
+                cout << Per[o];
+                count++;
+            }
+        }
+    }
+}
+
+void PersonWorkLayer::sortBirth(vector<Person>& Per)
+{
+    for(int i = 0; i < Per.size(); i++)
+    {
+        births.push_back(Per[i].getbirth());
+    }
+    sort(births.begin(), births.end());
+    for(size_t i = 0; i < Per.size(); i++)
+    {
+        for(size_t o = 0; o < Per.size(); o++)
+        {
+            if(Per[o].getbirth() == births[i] && count != Per.size())
+            {
+                cout << Per[o];
+                count++;
+            }
+        }
+    }
+}
+
+void PersonWorkLayer::sortDeath(vector<Person>& Per)
+{
+    for(int i = 0; i < Per.size(); i++)
+    {
+        deaths.push_back(Per[i].getdeath());
+    }
+    sort(deaths.begin(), deaths.end());
+    for(size_t i = 0; i < Per.size(); i++)
+    {
+        for(size_t o = 0; o < Per.size(); o++)
+        {
+            if(Per[o].getdeath() == deaths[i] && count != Per.size())
+            {
+                cout << Per[o];
+                count++;
+            }
+        }
+    }
+}

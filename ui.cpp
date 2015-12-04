@@ -76,96 +76,23 @@ bool UI::personChooser(vector<Person>& Per, Data& d,PersonWorkLayer& dom)
             switch(input){
             case 1:
                 cout << "Sort By First name" << endl;
-                for(int i = 0; i < Per.size(); i++)
-                {
-                    firstname.push_back(Per[i].getfname());
-                }
-                sort(firstname.begin(), firstname.end());
-                for(size_t i = 0; i < Per.size(); i++)
-                {
-                    for(size_t o = 0; o < Per.size(); o++)
-                    {
-                        if(Per[o].getfname() == firstname[i])
-                            cout << Per[o];
-                    }
-                }
+                dom.sortName(Per);
                 break;
             case 2:
                 cout << "Sort By Last name" << endl;
-                for(int i = 0; i < Per.size(); i++)
-                {
-                    lastname.push_back(Per[i].getlname());
-                }
-                sort(lastname.begin(), lastname.end());
-                for(size_t i = 0; i < Per.size(); i++)
-                {
-                    for(size_t o = 0; o < Per.size(); o++)
-                    {
-                        if(Per[o].getlname() == lastname[i])
-                            cout << Per[o];
-                    }
-                }
+                dom.sortLastName(Per);
                 break;
             case 3:
                 cout << "Sort By Sex" << endl;
-                for(int i = 0; i < Per.size(); i++)
-                {
-                    sexes.push_back(Per[i].getsex());
-                }
-                sort(sexes.begin(), sexes.end());
-                for(size_t i = 0; i < Per.size(); i++)
-                {
-                    for(size_t o = 0; o < Per.size(); o++)
-                    {
-                        if(Per[o].getsex() == sexes[i] && count != Per.size())
-                        {
-                            cout << Per[o];
-                            count++;
-                        }
-                    }
-                }
+                dom.sortSex(Per);
                 break;
             case 4:
                 cout << "Sort By Date of birth" << endl;
-                for(int i = 0; i < Per.size(); i++)
-                {
-                    births.push_back(Per[i].getbirth());
-                }
-                sort(births.begin(), births.end());
-                for(size_t i = 0; i < Per.size(); i++)
-                {
-                    for(size_t o = 0; o < Per.size(); o++)
-                    {
-                        if(Per[o].getbirth() == births[i] && count != Per.size())
-                        {
-                            cout << Per[o];
-                            count++;
-                        }
-                    }
-                }
+                dom.sortBirth(Per);
                 break;
             case 5:
                 cout << "Sort By Date of death" << endl;
-                for(int i = 0; i < Per.size(); i++)
-                {
-                    deaths.push_back(Per[i].getdeath());
-                }
-                sort(deaths.begin(), deaths.end());
-                for(size_t i = 0; i < Per.size(); i++)
-                {
-                    for(size_t o = 0; o < Per.size(); o++)
-                    {
-                        if(Per[o].getdeath() == deaths[i] && count != Per.size())
-                        {
-                            cout << Per[o];
-                            count++;
-                        }
-                    }
-                }
-                break;
-            default:
-                cout << "Wrong input!" << endl;
-            }
+                dom.sortDeath(Per);
             break;
         default:
             breaker = true;
