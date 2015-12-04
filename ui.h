@@ -15,9 +15,9 @@
 using namespace std;
 
 struct UI {
-    bool personChooser(vector<Person>& Per, Data& d,PersonWorkLayer& dom);
+    bool personChooser(vector<Person>& Per, Data& d,PersonWorkLayer& pom);
     bool computerChooser(vector<Computers>& Comp, Data& d,computerWorkLayer& com);
-    void personStarter(vector<Person>& Per, Data& d,PersonWorkLayer& dom);
+    void personStarter(vector<Person>& Per, Data& d,PersonWorkLayer& pom);
     void computerStarter(vector<Computers>& Comp, Data& d,computerWorkLayer& com);
 };
 

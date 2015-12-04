@@ -23,14 +23,14 @@ int GetComputerChoice(int srtornot)
     return input;
 }
 
-void UI::personStarter(vector<Person>& Per, Data& d, PersonWorkLayer& dom)
+void UI::personStarter(vector<Person>& Per, Data& d, PersonWorkLayer& pom)
 {
     bool breaker = false;
     cout << "This is a Database to register and view\nFamous Computer people\n\n" << endl;
     while(breaker == false)
     {
         d.personLoad(Per);
-        breaker = personChooser(Per,d,dom);
+        breaker = personChooser(Per,d,pom);
     }
 }
 
@@ -45,21 +45,15 @@ void computerStarter(vector<Computers>& Comp, Data& d,computerWorkLayer& com)
     }
 }
 
-bool UI::personChooser(vector<Person>& Per, Data& d,PersonWorkLayer& dom)
+bool UI::personChooser(vector<Person>& Per, Data& d,PersonWorkLayer& pom)
 {
     int srtornot = 0;
     bool breaker = false;
     string name;
     int input = GetPersonChoice(srtornot);
-    vector<string> firstname;
-    vector<string> lastname;
-    vector<string> sexes;
-    vector<string> births;
-    vector<string> deaths;
-    int count = 0;
     switch (input) {
         case 1:
-            dom.insert(d,Per);
+            pom.insert(d,Per);
             break;
         case 2:
             for(size_t i = 0; i < Per.size(); i++)
@@ -68,34 +62,30 @@ bool UI::personChooser(vector<Person>& Per, Data& d,PersonWorkLayer& dom)
             }
             break;
         case 3:
-            dom.searchByName(Per);
+            pom.searchByName(Per);
             break;
         case 4:
             srtornot = 1;
             input = GetPersonChoice(srtornot);
             switch(input){
             case 1:
-                cout << "Sort By First name" << endl;
-                dom.sortName(Per);
+                pom.sortName(Per);
                 break;
             case 2:
-                cout << "Sort By Last name" << endl;
-                dom.sortLastName(Per);
+                pom.sortLastName(Per);
                 break;
             case 3:
-                cout << "Sort By Sex" << endl;
-                dom.sortSex(Per);
+                pom.sortSex(Per);
                 break;
             case 4:
-                cout << "Sort By Date of birth" << endl;
-                dom.sortBirth(Per);
+                pom.sortBirth(Per);
                 break;
             case 5:
-                cout << "Sort By Date of death" << endl;
-                dom.sortDeath(Per);
+                pom.sortDeath(Per);
             break;
         default:
             breaker = true;
+        }
   }
   return breaker;
 }
