@@ -87,7 +87,7 @@ void computerWorkLayer::sortType(vector<Computers>& Comp)
             if(Comp[o].gettype() == type[i] && count != Comp.size())
             {
                 cout << Comp[o];
-                count++;
+                    count++;
             }
         }
     }
@@ -109,7 +109,7 @@ void computerWorkLayer::sortMade(vector<Computers>& Comp)
             if(Comp[o].getmade() == made[i] && count != Comp.size())
             {
                 cout << Comp[o];
-                count++;
+                    count++;
             }
         }
     }

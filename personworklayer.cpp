@@ -94,7 +94,7 @@ void PersonWorkLayer::sortName(vector<Person>& Per)
         for(size_t o = 0; o < Per.size(); o++)
         {
             if(Per[o].getfname() == firstname[i])
-            cout << Per[o];
+                cout << Per[o];
         }
     }
 }
@@ -156,7 +156,7 @@ void PersonWorkLayer::sortBirth(vector<Person>& Per)
             if(Per[o].getbirth() == births[i] && count != Per.size())
             {
                 cout << Per[o];
-                count++;
+                    count++;
             }
         }
     }
@@ -178,7 +178,7 @@ void PersonWorkLayer::sortDeath(vector<Person>& Per)
             if(Per[o].getdeath() == deaths[i] && count != Per.size())
             {
                 cout << Per[o];
-                count++;
+                    count++;
             }
         }
     }
