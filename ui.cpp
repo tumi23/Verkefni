@@ -62,7 +62,10 @@ bool UI::personChooser(vector<Person>& Per, Data& d,PersonWorkLayer& dom)
             dom.insert(d,Per);
             break;
         case 2:
-            dom.writer(Per);
+            for(size_t i = 0; i < Per.size(); i++)
+            {
+                cout << Per[i];
+            }
             break;
         case 3:
             dom.searchByName(Per);

@@ -1,14 +1,5 @@
 #include "personworklayer.h"
 
-void PersonWorkLayer::writer(vector<Person>& Per)
-{
-    int size = Per.size();
-    for(int i = 0;i < size; i++)
-    {
-        Per[i].testwriter();
-    }
-}
-
 bool PersonWorkLayer::NameChecker(string fname, string lname, vector<Person>& Per)
 {
     bool checker = true;
@@ -85,7 +76,7 @@ void PersonWorkLayer::searchByName(vector<Person>& Per)
     {
         if(Per[i].getfname().find(name) != string::npos || Per[i].getlname().find(name) != string::npos)
         {
-                    Per[i].testwriter();
+            cout << Per[i];
         }
     }
 }
