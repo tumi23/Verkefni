@@ -32,3 +32,81 @@ void computerWorkLayer::searchByName(vector<Computers>& Comp)
     }
 }
 
+void computerWorkLayer::sortName(vector<Computers>& Comp)
+{
+    int count = 0;
+    for(int i = 0; i < Comp.size(); i++)
+    {
+        name.push_back(Comp[i].getname());
+    }
+    sort(name.begin(), name.end());
+    for(size_t i = 0; i < Comp.size(); i++)
+    {
+        for(size_t o = 0; o < Comp.size(); o++)
+        {
+            if(Comp[o].getname() == name[i])
+                cout << Comp[o];
+        }
+    }
+}
+
+
+void computerWorkLayer::sortYearMade(vector<Computers>& Comp)
+{
+    int count = 0;
+    for(int i = 0; i < Comp.size(); i++)
+    {
+        yearMade.push_back(Comp[i].getyearMade());
+    }
+    sort(yearMade.begin(), yearMade.end());
+    for(size_t i = 0; i < Comp.size(); i++)
+    {
+        for(size_t o = 0; o < Comp.size(); o++)
+        {
+            if(Comp[o].getname() == name[i])
+                cout << Comp[o];
+        }
+    }
+}
+
+void computerWorkLayer::sortType(vector<Computers>& Comp)
+{
+    int count = 0;
+    for(int i = 0; i < Comp.size(); i++)
+    {
+        type.push_back(Comp[i].gettype());
+    }
+    sort(type.begin(), type.end());
+    for(size_t i = 0; i < Comp.size(); i++)
+    {
+        for(size_t o = 0; o < Comp.size(); o++)
+        {
+            if(Comp[o].gettype() == type[i] && count != Comp.size())
+            {
+                cout << Comp[o];
+                count++;
+            }
+        }
+    }
+}
+
+void computerWorkLayer::sortMade(vector<Computers>& Comp)
+{
+    int count = 0;
+    for(int i = 0; i < Comp.size(); i++)
+    {
+        made.push_back(Comp[i].getmade());
+    }
+    sort(made.begin(), made.end());
+    for(size_t i = 0; i < Comp.size(); i++)
+    {
+        for(size_t o = 0; o < Comp.size(); o++)
+        {
+            if(Comp[o].getmade() == made[i] && count != Comp.size())
+            {
+                cout << Comp[o];
+                count++;
+            }
+        }
+    }
+}
