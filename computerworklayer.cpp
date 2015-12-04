@@ -34,6 +34,7 @@ void computerWorkLayer::searchByName(vector<Computers>& Comp)
 
 void computerWorkLayer::sortName(vector<Computers>& Comp)
 {
+    vector<string> name;
     int count = 0;
     for(int i = 0; i < Comp.size(); i++)
     {
@@ -53,6 +54,7 @@ void computerWorkLayer::sortName(vector<Computers>& Comp)
 
 void computerWorkLayer::sortYearMade(vector<Computers>& Comp)
 {
+    vector<string> yearMade;
     int count = 0;
     for(int i = 0; i < Comp.size(); i++)
     {
@@ -63,7 +65,7 @@ void computerWorkLayer::sortYearMade(vector<Computers>& Comp)
     {
         for(size_t o = 0; o < Comp.size(); o++)
         {
-            if(Comp[o].getname() == name[i])
+            if(Comp[o].getyearMade() == yearMade[i])
                 cout << Comp[o];
         }
     }
@@ -71,6 +73,7 @@ void computerWorkLayer::sortYearMade(vector<Computers>& Comp)
 
 void computerWorkLayer::sortType(vector<Computers>& Comp)
 {
+    vector<string> type;
     int count = 0;
     for(int i = 0; i < Comp.size(); i++)
     {
@@ -92,6 +95,7 @@ void computerWorkLayer::sortType(vector<Computers>& Comp)
 
 void computerWorkLayer::sortMade(vector<Computers>& Comp)
 {
+    vector<string> made;
     int count = 0;
     for(int i = 0; i < Comp.size(); i++)
     {

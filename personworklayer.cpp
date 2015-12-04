@@ -113,7 +113,7 @@ void PersonWorkLayer::sortLastName(vector<Person>& Per)
         for(size_t o = 0; o < Per.size(); o++)
         {
             if(Per[o].getlname() == lastname[i])
-            cout << Per[o];
+                cout << Per[o];
         }
     }
 }

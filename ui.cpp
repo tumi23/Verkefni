@@ -34,14 +34,14 @@ void UI::personStarter(vector<Person>& Per, Data& d, PersonWorkLayer& pom)
     }
 }
 
-void computerStarter(vector<Computers>& Comp, Data& d,computerWorkLayer& com)
+void UI::computerStarter(vector<Computers>& Comp, Data& d,computerWorkLayer& com)
 {
     bool breaker = false;
     cout << "This is a Database to register and view Computers" << endl;
     while(breaker == false)
     {
-//        d.computerLoad(Comp);
-//        breaker = computerChooser(Comp,d,com);
+        d.computerLoad(Comp);
+        breaker = computerChooser(Comp,d,com);
     }
 }
 
@@ -96,11 +96,6 @@ bool UI::computerChooser(vector<Computers>& Comp, Data& d,computerWorkLayer& com
     bool breaker = false;
     string name1;
     int input = GetComputerChoice(srtornot);
-    vector<string> name;
-    vector<string> yearMade;
-    vector<string> type;
-    vector<string> made;
-    int count = 0;
     switch (input) {
         case 1:
             com.insert(Comp, d);

@@ -40,7 +40,7 @@ void Data::personSave(vector<Person>& p)
     newFile.close();
 }
 
-void computerLoad(vector<Computers>& Comp)
+void Data::computerLoad(vector<Computers>& Comp)
 {
     Comp.clear();
     ifstream file("computerlist.csv");
@@ -56,7 +56,7 @@ void computerLoad(vector<Computers>& Comp)
     file.close();
 }
 
-void computerSave(vector<Computers>& Comp)
+void Data::computerSave(vector<Computers>& Comp)
 {
     ofstream newFile;
     newFile.open("computerlist.csv");

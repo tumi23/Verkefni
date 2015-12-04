@@ -1,8 +1,9 @@
 #ifndef COMPUTERWORKLAYER_H
 #define COMPUTERWORKLAYER_H
 
-#include "person.h"
 #include "data.h"
+#include "Computers.h"
+#include <algorithm>
 
 struct computerWorkLayer {
     void insert(vector<Computers>& Comp, Data& d);

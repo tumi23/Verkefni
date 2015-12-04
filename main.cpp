@@ -3,6 +3,7 @@
 #include "ui.h"
 #include "personworklayer.h"
 #include "computerworklayer.h"
+#include "Computers.h"
 
 const string question = "Type 1 for computers and type 0 for People";
 

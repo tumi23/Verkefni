@@ -11,7 +11,7 @@ Computers::Computers(string name_, string yearMade_, string type_, string made_)
 ostream& operator<<(ostream &out, const Computers &x)
 {
     out << "Name: " << x.name << endl << "Year made: " << x.yearMade << endl
-    << "Type: " << x.type << endl << "Was it made?" << x.made;
+    << "Type: " << x.type << endl << "Was it made?: " << x.made << endl << endl;
     return out;
 }
 
