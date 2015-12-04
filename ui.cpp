@@ -116,7 +116,7 @@ void computerStarter(vector<Computers>& Comp, Data& d)
     cout << "This is a Database to register and view Computers" << endl;
     while(breaker == false)
     {
-        d.computerLoad(Comp);
+//        d.computerLoad(Comp);
 //        breaker = computerChooser(Comp,d);
     }
 }
@@ -387,7 +387,7 @@ void UI::computerInsert(vector<Computers>& Comp, Data& d)
     cout << "Was it made? (Answer with yes or no)";
     cin >> made;
     Comp.push_back(Computers(name, yearMade, type, made));
-    d.computerSave(Comp);
+//    d.computerSave(Comp);
 }
 
 void UI::computersearchByName(vector<Computers>& Comp, string name)
