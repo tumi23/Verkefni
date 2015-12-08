@@ -25,8 +25,8 @@ class Person {
     string fname;
     string lname;
     string sex;
-    date birth;
-    date death;
+    string birth;
+    string death;
 public:
     Person(string firstName, string lastName, string tSex, string tBirth, string tDeath);
     friend ostream& operator<<(ostream &out, const Person &x);

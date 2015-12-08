@@ -65,11 +65,7 @@ void Data::computerLoad(vector<computer>& Comp)//Fall sem sér um að lesa inn a
     db.close();
 }
 
-<<<<<<< HEAD
 void Data::computerSave(string name, string yearMade, string type, string doesItExist)
-=======
-void Data::computerSave(vector<computer>& Comp)
->>>>>>> b34d0c64081eb60ce89000e3e5e54b91bac6033f
 {
     db.open();
     QSqlQuery query(db);
