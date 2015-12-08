@@ -29,7 +29,7 @@ class Person {
     string birth;
     string death;
 public:
-    Person(string firstname, string lastname, string tsex, string tbirth, string tdeath);
+    Person(string firstName, string lastName, string tSex, string tBirth, string tDeath);
     friend ostream& operator<<(ostream &out, const Person &x);
     string getfname();
     string getlname();

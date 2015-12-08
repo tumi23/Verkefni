@@ -5,8 +5,6 @@
 #include "computerworklayer.h"
 #include "Computers.h"
 
-const string question = "Type 1 for computers and type 0 for People";
-
 int main()
 {
     vector<Person> Per;
@@ -15,15 +13,5 @@ int main()
     UI uid;
     PersonWorkLayer pom;
     computerWorkLayer com;
-    int x;
-    cout << question;
-    cin >> x;
-    if(x == 0)
-    {
-        uid.personStarter(Per,d,pom);
-    }
-    else if(x == 1)
-    {
-        uid.computerStarter(Comp,d,com);
-    }
+    uid.UIDbChoseLooper(Comp,Per,d,pom,com);
 }

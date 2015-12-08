@@ -15,10 +15,13 @@
 using namespace std;
 
 struct UI {
-    bool personChooser(vector<Person>& Per, Data& d,PersonWorkLayer& pom);
-    bool computerChooser(vector<Computers>& Comp, Data& d,computerWorkLayer& com);
+    void UIDbChoseLooper(vector<Computers>& Comp, vector<Person>& Per, Data& d, PersonWorkLayer& pom, computerWorkLayer& com);
     void personStarter(vector<Person>& Per, Data& d,PersonWorkLayer& pom);
+    bool personChooser(vector<Person>& Per, Data& d,PersonWorkLayer& pom);
+    int GetPersonChoice(int srtornot);
     void computerStarter(vector<Computers>& Comp, Data& d,computerWorkLayer& com);
+    bool computerChooser(vector<Computers>& Comp, Data& d,computerWorkLayer& com);
+    int GetComputerChoice(int srtornot);
 };
 
 #endif // UI_H
