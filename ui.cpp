@@ -56,10 +56,9 @@ bool UI::personChooser(vector<Person>& Per, Data& d,PersonWorkLayer& pom)
             pom.insert(d,Per);
             break;
         case 2:
+            cout << "FirstName\tLastName\tSex\tBirth\tDeath" << endl << "---------------------------------------------------------" << endl;
             for(size_t i = 0; i < Per.size(); i++)
-            {
                 cout << Per[i];
-            }
             break;
         case 3:
             pom.searchByName(Per);
@@ -125,10 +124,9 @@ bool UI::computerChooser(vector<computer>& Comp, Data& d,computerWorkLayer& com)
             com.insert(Comp, d);
             break;
         case 2:
+            cout << "Name\tYear\tType\tMade" << endl << "---------------------------------------------------------" << endl;
             for(size_t i = 0; i < Comp.size(); i++)
-            {
                 cout << Comp[i];
-            }
             break;
         case 3:
             com.searchByName(Comp);

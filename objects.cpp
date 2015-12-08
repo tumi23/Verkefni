@@ -10,8 +10,7 @@ computer::computer(string name_, string yearMade_, string type_, string made_)
 
 ostream& operator<<(ostream &out, const computer &x)
 {
-    out << "Name: " << x.name << endl << "Year made: " << x.yearMade << endl
-    << "Type: " << x.type << endl << "Was it made?: " << x.made << endl << endl;
+    out << x.name << "\t" << x.yearMade << "\t" << x.type << "\t" << x.made << endl;
     return out;
 }
 
@@ -46,7 +45,7 @@ Person::Person(string firstName, string lastName, string tSex, string tBirth, st
 
 ostream& operator<<(ostream &out, const Person &x)
 {
-    out << "First Name: " << x.fname << "\nLast Name: " << x.lname << "\nSex: "<< x.sex << "\nBirth: "<< x.birth << "\nDeath: " << x.death << endl << endl;
+    out << x.fname << "\t" << x.lname << "\t" << x.sex << "\t" << x.birth << "\t" << x.death << endl;
     return out;
 }
 
