@@ -1,9 +1,19 @@
-#ifndef DOMAINLAYER_H
-#define DOMAINLAYER_H
+#ifndef WORKLAYERS_H
+#define WORKLAYERS_H
 
-#include "person.h"
 #include "data.h"
+#include "objects.h"
 #include <algorithm>
+
+struct computerWorkLayer {
+    void insert(vector<Computers>& Comp, Data& d);
+    void searchByName(vector<Computers>& Comp);
+    void sortName(vector<Computers>& Comp);
+    void sortYearMade(vector<Computers>& Comp);
+    void sortType(vector<Computers>& Comp);
+    void sortMade(vector<Computers>& Comp);
+    void xd(int x);
+};
 
 struct PersonWorkLayer {
     void insert(Data& d, vector<Person>& Per);
@@ -16,4 +26,4 @@ struct PersonWorkLayer {
     void sortDeath(vector<Person>& Per);
 };
 
-#endif // DOMAINLAYER_H
+#endif // WORKLAYERS_H

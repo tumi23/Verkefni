@@ -1,11 +1,26 @@
-#ifndef PERSON_H
-#define PERSON_H
+#ifndef OBJECTS_H
+#define OBJECTS_H
 
 #include <iostream>
-#include <string>
 #include <vector>
+#include <iomanip>
 
 using namespace std;
+
+class Computers
+{
+    string name;
+    string yearMade;
+    string type;
+    string made;
+public:
+    Computers(string name_, string yearMade_, string type_, string made_);
+    friend ostream& operator<<(ostream &out, const Computers &x);
+    string getname();
+    string getyearMade();
+    string gettype();
+    string getmade();
+};
 
 class Person {
     string fname;
@@ -23,4 +38,4 @@ public:
     string getdeath();
 };
 
-#endif // UI_H
+#endif // OBJECTS_H
