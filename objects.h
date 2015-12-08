@@ -11,10 +11,10 @@ class date {
     unsigned int day;
     unsigned int month;
     unsigned int year;
-    std::string toString();
 public:
     date();
     date(int d, int m, int y);
+    std::string toString();
     date operator=(const date &other);
     bool operator<(const date &other);
     bool operator>(const date &other);
@@ -22,7 +22,7 @@ public:
 
 class computer {
     string name;
-    date built;
+    string yearMade;
     string type;
     string made;
 public:
