@@ -46,11 +46,11 @@ void Data::personSave(string fname,string lname, string sex, string birth, strin
     query.exec();
 }
 
-void Data::computerLoad(vector<Computers>& Comp)//Fall sem sér um að lesa inn allt úr Computers
+void Data::computerLoad(vector<computer>& Comp)//Fall sem sér um að lesa inn allt úr computer
 {                                               //töflunni í gagnagrunninum og setja í vector
     db.open();
     QSqlQuery query(db);
-    query.prepare("SELECT * FROM Computers");//Sér um að gefa Query SQL skipun sem Query mun
+    query.prepare("SELECT * FROM computer");//Sér um að gefa Query SQL skipun sem Query mun
     Comp.clear();                            //því nota til að draga gögn úr gagnagrunninum.
     string name, yearMade, type, made;
     query.exec();
@@ -60,12 +60,16 @@ void Data::computerLoad(vector<Computers>& Comp)//Fall sem sér um að lesa inn 
         yearMade= query.value("yearMade").toString().toStdString();
         type = query.value("type").toString().toStdString();
         made = query.value("doesItExist").toString().toStdString();
-        Comp.push_back(Computers(name, yearMade, type, made));
+        Comp.push_back(computer(name, yearMade, type, made));
     }
     db.close();
 }
 
+<<<<<<< HEAD
 void Data::computerSave(string name, string yearMade, string type, string doesItExist)
+=======
+void Data::computerSave(vector<computer>& Comp)
+>>>>>>> b34d0c64081eb60ce89000e3e5e54b91bac6033f
 {
     db.open();
     QSqlQuery query(db);

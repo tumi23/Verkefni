@@ -1,6 +1,6 @@
 #include "worklayers.h"
 
-void computerWorkLayer::insert(vector<Computers>& Comp, Data& d)
+void computerWorkLayer::insert(vector<computer>& Comp, Data& d)
 {
     string name, yearMade, type, made;
     bool breaker;
@@ -13,11 +13,11 @@ void computerWorkLayer::insert(vector<Computers>& Comp, Data& d)
     cin >> type;
     cout << "Was it made? (Answer with yes or no)";
     cin >> made;
-    Comp.push_back(Computers(name, yearMade, type, made));
+    Comp.push_back(computer(name, yearMade, type, made));
     d.computerSave(name,yearMade,type,made);
 }
 
-void computerWorkLayer::searchByName(vector<Computers>& Comp)
+void computerWorkLayer::searchByName(vector<computer>& Comp)
 {
     string name;
     cout << "Type in a name to search for: " << endl;
@@ -32,7 +32,7 @@ void computerWorkLayer::searchByName(vector<Computers>& Comp)
     }
 }
 
-void computerWorkLayer::sortName(vector<Computers>& Comp)
+void computerWorkLayer::sortName(vector<computer>& Comp)
 {
     vector<string> name;
     int count = 0;
@@ -52,7 +52,7 @@ void computerWorkLayer::sortName(vector<Computers>& Comp)
 }
 
 
-void computerWorkLayer::sortYearMade(vector<Computers>& Comp)
+void computerWorkLayer::sortYearMade(vector<computer>& Comp)
 {
     vector<string> yearMade;
     int count = 0;
@@ -71,7 +71,7 @@ void computerWorkLayer::sortYearMade(vector<Computers>& Comp)
     }
 }
 
-void computerWorkLayer::sortType(vector<Computers>& Comp)
+void computerWorkLayer::sortType(vector<computer>& Comp)
 {
     vector<string> type;
     int count = 0;
@@ -93,7 +93,7 @@ void computerWorkLayer::sortType(vector<Computers>& Comp)
     }
 }
 
-void computerWorkLayer::sortMade(vector<Computers>& Comp)
+void computerWorkLayer::sortMade(vector<computer>& Comp)
 {
     vector<string> made;
     int count = 0;

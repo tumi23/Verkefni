@@ -6,12 +6,12 @@
 #include <algorithm>
 
 struct computerWorkLayer {
-    void insert(vector<Computers>& Comp, Data& d);
-    void searchByName(vector<Computers>& Comp);
-    void sortName(vector<Computers>& Comp);
-    void sortYearMade(vector<Computers>& Comp);
-    void sortType(vector<Computers>& Comp);
-    void sortMade(vector<Computers>& Comp);
+    void insert(vector<computer>& Comp, Data& d);
+    void searchByName(vector<computer>& Comp);
+    void sortName(vector<computer>& Comp);
+    void sortYearMade(vector<computer>& Comp);
+    void sortType(vector<computer>& Comp);
+    void sortMade(vector<computer>& Comp);
     void xd(int x);
 };
 

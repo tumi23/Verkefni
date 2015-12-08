@@ -7,15 +7,27 @@
 
 using namespace std;
 
-class Computers
-{
+class date {
+    unsigned int day;
+    unsigned int month;
+    unsigned int year;
+    std::string toString();
+public:
+    date();
+    date(int d, int m, int y);
+    date operator=(const date &other);
+    bool operator<(const date &other);
+    bool operator>(const date &other);
+};
+
+class computer {
     string name;
-    string yearMade;
+    date built;
     string type;
     string made;
 public:
-    Computers(string name_, string yearMade_, string type_, string made_);
-    friend ostream& operator<<(ostream &out, const Computers &x);
+    computer(string name_, string yearMade_, string type_, string made_);
+    friend ostream& operator<<(ostream &out, const computer &x);
     string getname();
     string getyearMade();
     string gettype();
@@ -26,8 +38,8 @@ class Person {
     string fname;
     string lname;
     string sex;
-    string birth;
-    string death;
+    date birth;
+    date death;
 public:
     Person(string firstName, string lastName, string tSex, string tBirth, string tDeath);
     friend ostream& operator<<(ostream &out, const Person &x);

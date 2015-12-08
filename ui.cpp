@@ -1,7 +1,7 @@
 #include "ui.h"
 #include <algorithm>
 
-void UI::UIDbChoseLooper(vector<Computers>& Comp, vector<Person>& Per, Data& d, PersonWorkLayer& pom, computerWorkLayer& com)
+void UI::UIDbChoseLooper(vector<computer>& Comp, vector<Person>& Per, Data& d, PersonWorkLayer& pom, computerWorkLayer& com)
 {
     int input;
     bool breaker = false;
@@ -92,10 +92,10 @@ bool UI::personChooser(vector<Person>& Per, Data& d,PersonWorkLayer& pom)
   return breaker;
 }
 
-void UI::computerStarter(vector<Computers>& Comp, Data& d,computerWorkLayer& com)
+void UI::computerStarter(vector<computer>& Comp, Data& d,computerWorkLayer& com)
 {
     bool breaker = false;
-    cout << "\nThis is a Database to register\nand view Famous Computers\n" << endl;
+    cout << "\nThis is a Database to register\nand view Famous computer\n" << endl;
     while(breaker == false)
     {
         d.computerLoad(Comp);
@@ -107,14 +107,14 @@ int UI::GetComputerChoice(int srtornot)
 {
     int input;
     if(srtornot == 0)
-        cout << "(1)Add Computer\n(2)Display Computers\n(3)Search by name\n(4)sort\n!Anything else returns you back to choose a database!\n" << endl;
+        cout << "(1)Add Computer\n(2)Display computer\n(3)Search by name\n(4)sort\n!Anything else returns you back to choose a database!\n" << endl;
     else if(srtornot == 1)
         cout << "Sort by:\n (1)Name\n(2)Year made\n(3)Type\n(4)If it was made or not\n" << endl;
     cin >> input;
     return input;
 }
 
-bool UI::computerChooser(vector<Computers>& Comp, Data& d,computerWorkLayer& com)
+bool UI::computerChooser(vector<computer>& Comp, Data& d,computerWorkLayer& com)
 {
     int srtornot = 0;
     bool breaker = false;
