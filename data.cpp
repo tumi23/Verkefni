@@ -31,8 +31,19 @@ void Data::personSave(string fname,string lname, string sex, string birth, strin
 {
     db.open();
     QSqlQuery query(db);
-    query.exec("insert into person values(101, 'Danny', 'Young')");
-   // query.exec("INSERT INTO Person(firstname,lastname,sex,YearOfBirth,YearOfDeath) VALUES('" + fname + "'','" + lname + "'','" + sex + "''," + birth + "," + death + ")");
+    QString firstname = QString::fromStdString(fname);
+    QString lastname = QString::fromStdString(lname);
+    QString tsex = QString::fromStdString(sex);
+    QString tbirth = QString::fromStdString(birth);
+    QString tdeath = QString::fromStdString(death);
+    query.prepare("INSERT INTO person (firstname,lastname,sex,YearOfBirth,YearOfDeath) "
+                  "VALUES (:firstname, :lastname, :sex, :YearOfBirth, :YearOfDeath)");
+    query.bindValue(":firstname", firstname);
+    query.bindValue(":lastname", lastname);
+    query.bindValue(":sex", tsex);
+    query.bindValue(":YearOfBirth", tbirth);
+    query.bindValue(":YearOfDeath", tdeath);
+    query.exec();
 }
 
 void Data::computerLoad(vector<Computers>& Comp)//Fall sem sér um að lesa inn allt úr Computers
@@ -54,23 +65,19 @@ void Data::computerLoad(vector<Computers>& Comp)//Fall sem sér um að lesa inn 
     db.close();
 }
 
-void Data::computerSave(vector<Computers>& Comp)
+void Data::computerSave(string name, string yearMade, string type, string doesItExist)
 {
-    ofstream newFile;
-    newFile.open("computerlist.csv");
-    int size = Comp.size(),checker;
-    checker = 0;
-    for(int i = 0; i < size; i++)
-    {
-        if(checker == 0)
-        {
-        newFile << Comp[i].getname() << "," << Comp[i].getyearMade() << "," << Comp[i].gettype() << "," << Comp[i].getmade();
-        checker++;
-        }
-        else
-        {
-            newFile << "," << Comp[i].getname() << "," << Comp[i].getyearMade() << "," << Comp[i].gettype() << "," << Comp[i].getmade();
-        }
-    }
-    newFile.close();
+    db.open();
+    QSqlQuery query(db);
+    QString tname = QString::fromStdString(name);
+    QString tyearMade = QString::fromStdString(yearMade);
+    QString ttype = QString::fromStdString(type);
+    QString tdoesItExist = QString::fromStdString(doesItExist);
+    query.prepare("INSERT INTO computers (name,yearMade,type,doesItExist) "
+                  "VALUES (:name,:yearMade,:type,:doesItExist)");
+    query.bindValue(":name", tname);
+    query.bindValue(":yearMade", tyearMade);
+    query.bindValue(":type", ttype);
+    query.bindValue(":doesItExist", tdoesItExist);
+    query.exec();
 }

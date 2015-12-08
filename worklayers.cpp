@@ -14,7 +14,7 @@ void computerWorkLayer::insert(vector<Computers>& Comp, Data& d)
     cout << "Was it made? (Answer with yes or no)";
     cin >> made;
     Comp.push_back(Computers(name, yearMade, type, made));
-//    d.computerSave(Comp);
+    d.computerSave(name,yearMade,type,made);
 }
 
 void computerWorkLayer::searchByName(vector<Computers>& Comp)

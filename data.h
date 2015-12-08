@@ -16,7 +16,7 @@ public:
     void personLoad(vector<Person>& p);
     void personSave(string fname,string lname, string sex, string birth, string death);
     void computerLoad(vector<Computers>& Comp);
-    void computerSave(vector<Computers>& Comp);
+    void computerSave(string name, string yearMade, string type, string doesItExist);
 private:
     QSqlDatabase db;
 };
