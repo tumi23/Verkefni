@@ -6,8 +6,7 @@
 #include <string>
 #include <vector>
 
-#include "person.h"
-#include "Computers.h"
+#include "objects.h"
 
 using namespace std;
 

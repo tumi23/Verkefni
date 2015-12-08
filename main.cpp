@@ -1,9 +1,7 @@
 #include "data.h"
-#include "person.h"
+#include "objects.h"
 #include "ui.h"
-#include "personworklayer.h"
-#include "computerworklayer.h"
-#include "Computers.h"
+#include "worklayers.h"
 
 int main()
 {

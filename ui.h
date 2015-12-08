@@ -6,11 +6,9 @@
 #include <vector>
 #include <algorithm>
 
-#include "person.h"
 #include "data.h"
-#include "Computers.h"
-#include "personworklayer.h"
-#include "computerworklayer.h"
+#include "objects.h"
+#include "worklayers.h"
 
 using namespace std;
 

@@ -31,8 +31,8 @@ void Data::personSave(string fname,string lname, string sex, string birth, strin
 {
     db.open();
     QSqlQuery query(db);
-    string queryInsert = "INSERT INTO Person(firstname,lastname,sex,YearOfBirth,YearOfDeath) VALUES(" + fname + "," + lname + "," + sex + "," + birth + "," + death + ")";
-    query.exec(QString(queryInsert.c_str()));
+    query.exec("insert into person values(101, 'Danny', 'Young')");
+   // query.exec("INSERT INTO Person(firstname,lastname,sex,YearOfBirth,YearOfDeath) VALUES('" + fname + "'','" + lname + "'','" + sex + "''," + birth + "," + death + ")");
 }
 
 void Data::computerLoad(vector<Computers>& Comp)//Fall sem sér um að lesa inn allt úr Computers
