@@ -1,32 +1,32 @@
 #include "ui.h"
 #include <algorithm>
 
-int GetPersonChoice(int srtornot)//Gives information on what the user wants to do
+void UI::UIDbChoseLooper(vector<Computers>& Comp, vector<Person>& Per, Data& d, PersonWorkLayer& pom, computerWorkLayer& com)
 {
     int input;
-    if(srtornot == 0)
-        cout << "(1)Add Person\n(2)Display Persons\n(3)Search by name\n(4)Sort\n!Anything else stops the program!\n" << endl;
-    else if(srtornot == 1)
-        cout << "Sort by:\n(1)First name\n(2)Last name\n(3)Sex\n(4)Date of birth\n(5)Date of death" << endl;
-    cin >> input;
-    return input;
-}
-
-int GetComputerChoice(int srtornot)
-{
-    int input;
-    if(srtornot == 0)
-        cout << "(1)Add Computer\n(2)Display Computers\n(3)Search by name\n(4)sort\n!Anything else stops the program!\n" << endl;
-    else if(srtornot == 1)
-        cout << "Sort by:\n (1)Name\n(2)Year made\n(3)Type\n(4)If it was made or not\n" << endl;
-    cin >> input;
-    return input;
+    bool breaker = false;
+    d.dbStarter();
+    while(breaker == false)
+    {
+        cout << "(1)Person Database\n(2)Computer Database\n!Anything Else Quits!" << endl;
+        cin >> input;
+        switch(input){
+            case 1:
+                personStarter(Per,d,pom);
+                break;
+            case 2:
+                computerStarter(Comp,d,com);
+                break;
+            default:
+                breaker = true;
+        }
+    }
 }
 
 void UI::personStarter(vector<Person>& Per, Data& d, PersonWorkLayer& pom)
 {
     bool breaker = false;
-    cout << "This is a Database to register and view\nFamous Computer people\n\n" << endl;
+    cout << "\nThis is a Database to register\nand view Famous Computer people\n" << endl;
     while(breaker == false)
     {
         d.personLoad(Per);
@@ -34,15 +34,15 @@ void UI::personStarter(vector<Person>& Per, Data& d, PersonWorkLayer& pom)
     }
 }
 
-void UI::computerStarter(vector<Computers>& Comp, Data& d,computerWorkLayer& com)
+int UI::GetPersonChoice(int srtornot)//Gives information on what the user wants to do
 {
-    bool breaker = false;
-    cout << "This is a Database to register and view Computers" << endl;
-    while(breaker == false)
-    {
-        d.computerLoad(Comp);
-        breaker = computerChooser(Comp,d,com);
-    }
+    int input;
+    if(srtornot == 0)
+        cout << "(1)Add Person\n(2)Display Persons\n(3)Search by name\n(4)Sort\n!Anything else returns you back to choose a database!\n" << endl;
+    else if(srtornot == 1)
+        cout << "Sort by:\n(1)First name\n(2)Last name\n(3)Sex\n(4)Date of birth\n(5)Date of death" << endl;
+    cin >> input;
+    return input;
 }
 
 bool UI::personChooser(vector<Person>& Per, Data& d,PersonWorkLayer& pom)
@@ -82,12 +82,36 @@ bool UI::personChooser(vector<Person>& Per, Data& d,PersonWorkLayer& pom)
                 break;
             case 5:
                 pom.sortDeath(Per);
-            break;
+                break;
+            default:
+                cout << "Wrong input!" << endl;
+            }
         default:
             breaker = true;
         }
-  }
   return breaker;
+}
+
+void UI::computerStarter(vector<Computers>& Comp, Data& d,computerWorkLayer& com)
+{
+    bool breaker = false;
+    cout << "\nThis is a Database to register\nand view Famous Computers\n" << endl;
+    while(breaker == false)
+    {
+        d.computerLoad(Comp);
+        breaker = computerChooser(Comp,d,com);
+    }
+}
+
+int UI::GetComputerChoice(int srtornot)
+{
+    int input;
+    if(srtornot == 0)
+        cout << "(1)Add Computer\n(2)Display Computers\n(3)Search by name\n(4)sort\n!Anything else returns you back to choose a database!\n" << endl;
+    else if(srtornot == 1)
+        cout << "Sort by:\n (1)Name\n(2)Year made\n(3)Type\n(4)If it was made or not\n" << endl;
+    cin >> input;
+    return input;
 }
 
 bool UI::computerChooser(vector<Computers>& Comp, Data& d,computerWorkLayer& com)
@@ -128,7 +152,6 @@ bool UI::computerChooser(vector<Computers>& Comp, Data& d,computerWorkLayer& com
                 cout << "Sort By if it has been made or not" << endl;
                 com.sortMade(Comp);
                 break;
-
             default:
                 cout << "Wrong input!" << endl;
             }

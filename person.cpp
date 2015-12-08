@@ -1,12 +1,12 @@
 #include "person.h"
 
-Person::Person(string firstname, string lastname, string tsex, string tbirth, string tdeath)
+Person::Person(string firstName, string lastName, string tSex, string tBirth, string tDeath)
 {
-    fname = firstname;
-    lname = lastname;
-    sex = tsex;
-    birth = tbirth;
-    death = tdeath;
+    fname = firstName;
+    lname = lastName;
+    sex = tSex;
+    birth = tBirth;
+    death = tDeath;
 }
 
 ostream& operator<<(ostream &out, const Person &x)

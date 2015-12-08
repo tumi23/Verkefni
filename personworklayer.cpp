@@ -62,7 +62,7 @@ void PersonWorkLayer::insert(Data& d, vector<Person>& Per)
         }
     }
     Per.push_back(Person(fname, lname, sex, birth, death));
-    d.personSave(Per);
+    d.personSave(fname,lname,sex,birth,death);
 }
 
 void PersonWorkLayer::searchByName(vector<Person>& Per)
@@ -83,7 +83,6 @@ void PersonWorkLayer::searchByName(vector<Person>& Per)
 void PersonWorkLayer::sortName(vector<Person>& Per)
 {
     vector<string> firstname;
-    int count = 0;
     for(int i = 0; i < Per.size(); i++)
     {
         firstname.push_back(Per[i].getfname());

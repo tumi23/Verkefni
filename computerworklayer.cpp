@@ -51,7 +51,6 @@ void computerWorkLayer::sortName(vector<Computers>& Comp)
     }
 }
 
-
 void computerWorkLayer::sortYearMade(vector<Computers>& Comp)
 {
     vector<string> yearMade;
