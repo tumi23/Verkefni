@@ -6,7 +6,7 @@
 int main()
 {
     vector<Person> Per;
-    vector<Computers> Comp;
+    vector<computer> Comp;
     Data d;
     UI uid;
     PersonWorkLayer pom;

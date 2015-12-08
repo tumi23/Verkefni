@@ -35,11 +35,11 @@ void Data::personSave(string fname,string lname, string sex, string birth, strin
    // query.exec("INSERT INTO Person(firstname,lastname,sex,YearOfBirth,YearOfDeath) VALUES('" + fname + "'','" + lname + "'','" + sex + "''," + birth + "," + death + ")");
 }
 
-void Data::computerLoad(vector<Computers>& Comp)//Fall sem sér um að lesa inn allt úr Computers
+void Data::computerLoad(vector<computer>& Comp)//Fall sem sér um að lesa inn allt úr computer
 {                                               //töflunni í gagnagrunninum og setja í vector
     db.open();
     QSqlQuery query(db);
-    query.prepare("SELECT * FROM Computers");//Sér um að gefa Query SQL skipun sem Query mun
+    query.prepare("SELECT * FROM computer");//Sér um að gefa Query SQL skipun sem Query mun
     Comp.clear();                            //því nota til að draga gögn úr gagnagrunninum.
     string name, yearMade, type, made;
     query.exec();
@@ -49,12 +49,12 @@ void Data::computerLoad(vector<Computers>& Comp)//Fall sem sér um að lesa inn 
         yearMade= query.value("yearMade").toString().toStdString();
         type = query.value("type").toString().toStdString();
         made = query.value("doesItExist").toString().toStdString();
-        Comp.push_back(Computers(name, yearMade, type, made));
+        Comp.push_back(computer(name, yearMade, type, made));
     }
     db.close();
 }
 
-void Data::computerSave(vector<Computers>& Comp)
+void Data::computerSave(vector<computer>& Comp)
 {
     ofstream newFile;
     newFile.open("computerlist.csv");
