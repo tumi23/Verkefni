@@ -34,7 +34,8 @@ void UI::printMenu(int menu) {
 }       
 
 bool UI::personChooser(vector<Person>& Per,vector<computer>& Comp, Data& d,PersonWorkLayer& pom) {
-    string pId, comname;
+    string pId;
+    vector<string> comname;
     d.personLoad(Per);
     printMenu(0);
     switch (getInput()) {
