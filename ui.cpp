@@ -51,7 +51,8 @@ bool UI::personChooser(vector<Person>& Per,vector<computer>& Comp, Data& d,Perso
 {
     int srtornot = 0;
     bool breaker = false;
-    string pId, comname;
+    string pId;
+    vector<string> comname;
     int input = GetPersonChoice(srtornot);
     switch (input) {
         case 1:
@@ -62,8 +63,14 @@ bool UI::personChooser(vector<Person>& Per,vector<computer>& Comp, Data& d,Perso
             {
                 cout << Per[i];
                 pId = Per[i].getpid();
+                comname.clear();
                 comname = d.creatorLoad2(pId);
-                cout << "Computer Created: " << comname << endl;
+                cout << "Computers Created: ";
+                for(int i = 0;i < comname.size();i++)
+                {
+                    cout << comname[i] << ", ";
+                }
+                cout << endl;
             }
             break;
         case 3:

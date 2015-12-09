@@ -106,7 +106,7 @@ string Data::creatorLoad(string c_id)
     return fullname;
 }
 
-string Data::creatorLoad2(string p_id)
+vector<string> Data::creatorLoad2(string p_id)
 {
     db.open();
     QSqlQuery query(db);
@@ -116,11 +116,12 @@ string Data::creatorLoad2(string p_id)
                   "JOIN Person ON IdConnector.p_id = Person.p_id WHERE Person.p_id = :number "
                   "ORDER BY Person.firstname");
     query.bindValue(":number", id);
-    string name;
+    vector<string> name;
+    string tname;
     query.exec();
     while(query.next())
     {
-        name = query.value("name").toString().toStdString();
+        name.push_back(query.value("name").toString().toStdString());
     }
     db.close();
     return name;
