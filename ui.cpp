@@ -3,40 +3,34 @@
 
 char UI::getInput() {
     char input = 0;
+    cout << "Input: ";
     cin >> input;
     return input;
 }
 
-void UI::UIDbChoseLooper(vector<computer>& Comp, vector<Person>& Per, Data& d, PersonWorkLayer& pom, computerWorkLayer& com) {
+void UI::startLoop(vector<computer>& Comp, vector<Person>& Per, Data& d, PersonWorkLayer& pom, computerWorkLayer& com) {
     d.dbStarter();
-    d.personLoad(Per);
-    d.computerLoad(Comp);
 
-    while(true) {
-        cout << "(1)Person Database - (2)Computer Database\n!Anything Else Quits!" << endl;
-        switch (getInput()) {
-            case '1': while(personChooser(Per,Comp,d,pom)); break;
-            case '2': while(computerChooser(Comp,d,com)); break;
-            default: return;
-        }
-    }
+    while(chooser(Per,Comp,d,pom,com));
 }
 
 //Gives information on what the user wants to do
 void UI::printMenu(int menu) {
     switch (menu) {
-        case 0: cout << "\n(1)Add Person - (2)Display Persons - (3)Search by name\n(4)Sort - (5)Connect Computer and Person\n!Anything else returns you back to choose a database!\n" << endl; break;
+        case 0: cout << "(1)Add Person - (2)Display Persons - (3)Search by name - (4)Sort - (5)Connect Computer and Person\n(6)Add Computer - (7)Display computer - (8)Search by name - (9)sort" << endl; break;
         case 1: cout << "Sort by:\n(1)First name\n(2)Last name\n(3)Sex\n(4)Date of birth\n(5)Date of death" << endl; break;
-        case 2: cout << "\n(1)Add Computer\n(2)Display computer\n(3)Search by name\n(4)sort\n!Anything else returns you back to choose a database!\n" << endl; break;
-        case 3: cout << "Sort by:\n(1)Name\n(2)Year made\n(3)Type\n(4)If it was made or not\n" << endl; break;
+        case 2: cout << "Sort by:\n(1)Name\n(2)Year made\n(3)Type\n(4)If it was made or not\n" << endl; break;
         default: cout << "Error menu not found!" << endl;
     }
 }       
 
-bool UI::personChooser(vector<Person>& Per,vector<computer>& Comp, Data& d,PersonWorkLayer& pom) {
-    string pId;
+bool UI::chooser(vector<Person>& Per, vector<computer>& Comp, Data& d, PersonWorkLayer& pom, computerWorkLayer& com) {
+    string pId, cId, name;
     vector<string> comname;
+
     d.personLoad(Per);
+    d.computerLoad(Comp);
+
     printMenu(0);
     switch (getInput()) {
         case '1': pom.insert(d,Per,Comp); break;
@@ -48,7 +42,7 @@ bool UI::personChooser(vector<Person>& Per,vector<computer>& Comp, Data& d,Perso
                 comname.clear();
                 comname = d.creatorLoad2(pId);
                 cout << "Computers Created: ";
-                for(int i = 0;i < comname.size();i++)
+                for(unsigned int i = 0; i < comname.size();i++)
                 {
                     cout << comname[i] << ", ";
                 }
@@ -68,18 +62,8 @@ bool UI::personChooser(vector<Person>& Per,vector<computer>& Comp, Data& d,Perso
             }
             break;
         case '5': pom.modifyConnection(d,Per,Comp); break;
-        default: return false;
-    }
-    return true;
-}
-
-bool UI::computerChooser(vector<computer>& Comp, Data& d,computerWorkLayer& com) {
-    d.computerLoad(Comp);
-    string cId, name;
-    printMenu(3);
-    switch (getInput()) {
-        case '1': com.insert(Comp, d); break;
-        case '2':
+        case '6': com.insert(Comp, d); break;
+        case '7':
             for(size_t i = 0; i < Comp.size(); i++)
             {
                 cout << Comp[i];
@@ -88,9 +72,9 @@ bool UI::computerChooser(vector<computer>& Comp, Data& d,computerWorkLayer& com)
                 cout << "Creator: " << name << endl;
             }
             break;
-        case '3': com.searchByName(Comp,d); break;
-        case '4':
-            printMenu(4);
+        case '8': com.searchByName(Comp,d); break;
+        case '9':
+            printMenu(2);
             switch(getInput()){
                 case '1': com.sortName(Comp,d); break;
                 case '2': com.sortYearMade(Comp,d); break;

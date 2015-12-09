@@ -11,5 +11,5 @@ int main()
     UI uid;
     PersonWorkLayer pom;
     computerWorkLayer com;
-    uid.UIDbChoseLooper(Comp,Per,d,pom,com);
+    uid.startLoop(Comp,Per,d,pom,com);
 }

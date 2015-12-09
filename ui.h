@@ -13,9 +13,8 @@
 using namespace std;
 
 struct UI {
-    void UIDbChoseLooper(vector<computer>& Comp, vector<Person>& Per, Data& d, PersonWorkLayer& pom, computerWorkLayer& com);
-    bool personChooser(vector<Person>& Per,vector<computer>& Comp, Data& d,PersonWorkLayer& pom);
-    bool computerChooser(vector<computer>& Comp, Data& d,computerWorkLayer& com);
+    void startLoop(vector<computer>& Comp, vector<Person>& Per, Data& d, PersonWorkLayer& pom, computerWorkLayer& com);
+    bool chooser(vector<Person>& Per,vector<computer>& Comp, Data& d,PersonWorkLayer& pom,computerWorkLayer& com);
     void printMenu(int menu);
     char getInput();
 };
