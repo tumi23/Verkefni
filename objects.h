@@ -40,14 +40,4 @@ public:
     string getdeath();
     string getpid();
 };
-
-class IdConnect {
-    string p_id;
-    string c_id;
-public:
-    IdConnect(string c_id_, string p_id_);
-    string getpid();
-    string getcid();
-};
-
 #endif // OBJECTS_H
