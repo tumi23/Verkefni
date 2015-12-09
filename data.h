@@ -20,7 +20,7 @@ public:
     void computerSave(string name, string yearMade, string type, string doesItExist);
     void idConnectSave(string c_id, string p_id);
     string creatorLoad(string c_id);
-    string creatorLoad2(string p_id);
+    vector<string> creatorLoad2(string p_id);
 private:
     QSqlDatabase db;
 };
