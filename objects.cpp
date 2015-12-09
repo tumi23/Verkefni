@@ -1,7 +1,8 @@
 #include "objects.h"
 
-computer::computer(string name_, string yearMade_, string type_, string made_)
+computer::computer(string c_id_, string name_, string yearMade_, string type_, string made_)
 {
+    c_id = c_id_;
     name = name_;
     yearMade = yearMade_;
     type = type_;
@@ -10,7 +11,7 @@ computer::computer(string name_, string yearMade_, string type_, string made_)
 
 ostream& operator<<(ostream &out, const computer &x)
 {
-    out << x.name << "\t" << x.yearMade << "\t" << x.type << "\t" << x.made << endl;
+    out << "\nName: " << x.name << "\nYear invented: " << x.yearMade << "\nType of Computer: " << x.type << "\nDoes it exist: " << x.made << endl;
     return out;
 }
 
@@ -34,8 +35,14 @@ string computer::getmade()
     return made;
 }
 
-Person::Person(string firstName, string lastName, string tSex, string tBirth, string tDeath)
+string computer::getcid()
 {
+    return c_id;
+}
+
+Person::Person(string per_id, string firstName, string lastName, string tSex, string tBirth, string tDeath)
+{
+    p_id = per_id;
     fname = firstName;
     lname = lastName;
     sex = tSex;
@@ -45,7 +52,7 @@ Person::Person(string firstName, string lastName, string tSex, string tBirth, st
 
 ostream& operator<<(ostream &out, const Person &x)
 {
-    out << x.fname << "\t" << x.lname << "\t" << x.sex << "\t" << x.birth << "\t" << x.death << endl;
+    out << "\nFirst Name: "<< x.fname << "\nLast Name: " << x.lname << "\nSex: " << x.sex << "\nYear Of Birth: " << x.birth << "\nYear Of Death: " << x.death << endl;
     return out;
 }
 
@@ -72,4 +79,9 @@ string Person::getbirth()
 string Person::getdeath()
 {
     return death;
+}
+
+string Person::getpid()
+{
+    return p_id;
 }

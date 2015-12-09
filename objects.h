@@ -8,33 +8,46 @@
 using namespace std;
 
 class computer {
+    string c_id;
     string name;
     string yearMade;
     string type;
     string made;
 public:
-    computer(string name_, string yearMade_, string type_, string made_);
+    computer(string c_id_, string name_, string yearMade_, string type_, string made_);
     friend ostream& operator<<(ostream &out, const computer &x);
     string getname();
     string getyearMade();
     string gettype();
     string getmade();
+    string getcid();
 };
 
 class Person {
+    string p_id;
     string fname;
     string lname;
     string sex;
-    date birth;
-    date death;
+    string birth;
+    string death;
 public:
-    Person(string firstName, string lastName, string tSex, string tBirth, string tDeath);
+    Person(string per_id, string firstName, string lastName, string tSex, string tBirth, string tDeath);
     friend ostream& operator<<(ostream &out, const Person &x);
     string getfname();
     string getlname();
     string getsex();
     string getbirth();
     string getdeath();
+    string getpid();
+};
+
+class IdConnect {
+    string p_id;
+    string c_id;
+public:
+    IdConnect(string c_id_, string p_id_);
+    string getpid();
+    string getcid();
 };
 
 #endif // OBJECTS_H

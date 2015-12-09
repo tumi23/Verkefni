@@ -14,8 +14,8 @@ using namespace std;
 
 struct UI {
     void UIDbChoseLooper(vector<computer>& Comp, vector<Person>& Per, Data& d, PersonWorkLayer& pom, computerWorkLayer& com);
-    void personStarter(vector<Person>& Per, Data& d,PersonWorkLayer& pom);
-    bool personChooser(vector<Person>& Per, Data& d,PersonWorkLayer& pom);
+    void personStarter(vector<Person>& Per,vector<computer>& Comp, Data& d,PersonWorkLayer& pom);
+    bool personChooser(vector<Person>& Per,vector<computer>& Comp, Data& d,PersonWorkLayer& pom);
     int GetPersonChoice(int srtornot);
     void computerStarter(vector<computer>& Comp, Data& d,computerWorkLayer& com);
     bool computerChooser(vector<computer>& Comp, Data& d,computerWorkLayer& com);

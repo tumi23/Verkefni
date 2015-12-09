@@ -2,22 +2,21 @@
 
 void computerWorkLayer::insert(vector<computer>& Comp, Data& d)
 {
-    string name, yearMade, type, made;
+    string name, yearMade, type, doesItExist;
     bool breaker;
     breaker = false;
-    cout << "Name: ";
+    cout << "Name: " << endl;
     cin >> name;
-    cout << endl << "Year made: ";
+    cout << "Year made: " << endl;
     cin >> yearMade;
-    cout << endl << "Type: ";
+    cout << "Type: " << endl;
     cin >> type;
-    cout << "Was it made? (Answer with yes or no)";
-    cin >> made;
-    Comp.push_back(computer(name, yearMade, type, made));
-    d.computerSave(name,yearMade,type,made);
+    cout << "Was it made? (Answer with Y for Yes or N for No): " << endl;
+    cin >> doesItExist;
+    d.computerSave(name,yearMade,type,doesItExist);
 }
 
-void computerWorkLayer::searchByName(vector<computer>& Comp)
+void computerWorkLayer::searchByName(vector<computer>& Comp, Data& d)
 {
     string name;
     cout << "Type in a name to search for: " << endl;
@@ -28,11 +27,14 @@ void computerWorkLayer::searchByName(vector<computer>& Comp)
         if(Comp[i].getname().find(name) != string::npos)
         {
             cout << Comp[i];
+            string cId = Comp[i].getcid();
+            string crtname = d.creatorLoad(cId);
+            cout << "Creator: " << crtname << endl;
         }
     }
 }
 
-void computerWorkLayer::sortName(vector<computer>& Comp)
+void computerWorkLayer::sortName(vector<computer>& Comp, Data& d)
 {
     vector<string> name;
     int count = 0;
@@ -46,13 +48,17 @@ void computerWorkLayer::sortName(vector<computer>& Comp)
         for(size_t o = 0; o < Comp.size(); o++)
         {
             if(Comp[o].getname() == name[i])
+            {
                 cout << Comp[o];
+                string cId = Comp[i].getcid();
+                string crtname = d.creatorLoad(cId);
+                cout << "Creator: " << crtname << endl;
+            }
         }
     }
 }
 
-
-void computerWorkLayer::sortYearMade(vector<computer>& Comp)
+void computerWorkLayer::sortYearMade(vector<computer>& Comp, Data& d)
 {
     vector<string> yearMade;
     int count = 0;
@@ -66,12 +72,17 @@ void computerWorkLayer::sortYearMade(vector<computer>& Comp)
         for(size_t o = 0; o < Comp.size(); o++)
         {
             if(Comp[o].getyearMade() == yearMade[i])
+            {
                 cout << Comp[o];
+                string cId = Comp[i].getcid();
+                string crtname = d.creatorLoad(cId);
+                cout << "Creator: " << crtname << endl;
+            }
         }
     }
 }
 
-void computerWorkLayer::sortType(vector<computer>& Comp)
+void computerWorkLayer::sortType(vector<computer>& Comp, Data& d)
 {
     vector<string> type;
     int count = 0;
@@ -87,13 +98,16 @@ void computerWorkLayer::sortType(vector<computer>& Comp)
             if(Comp[o].gettype() == type[i] && count != Comp.size())
             {
                 cout << Comp[o];
-                    count++;
+                string cId = Comp[i].getcid();
+                string crtname = d.creatorLoad(cId);
+                cout << "Creator: " << crtname << endl;
+                count++;
             }
         }
     }
 }
 
-void computerWorkLayer::sortMade(vector<computer>& Comp)
+void computerWorkLayer::sortMade(vector<computer>& Comp, Data& d)
 {
     vector<string> made;
     int count = 0;
@@ -109,7 +123,10 @@ void computerWorkLayer::sortMade(vector<computer>& Comp)
             if(Comp[o].getmade() == made[i] && count != Comp.size())
             {
                 cout << Comp[o];
-                    count++;
+                string cId = Comp[i].getcid();
+                string crtname = d.creatorLoad(cId);
+                cout << "Creator: " << crtname << endl;
+                count++;
             }
         }
     }
@@ -134,9 +151,9 @@ bool PersonWorkLayer::NameChecker(string fname, string lname, vector<Person>& Pe
     return checker;
 }
 
-void PersonWorkLayer::insert(Data& d, vector<Person>& Per)
+void PersonWorkLayer::insert(Data& d, vector<Person>& Per, vector<computer>& Comp)
 {
-    string fname, lname, sex, birth, death;
+    string fname, lname, sex, birth, death,yesOrNo,cId,pId;
     bool breaker;
     breaker = false;
     while(breaker == false)
@@ -166,19 +183,57 @@ void PersonWorkLayer::insert(Data& d, vector<Person>& Per)
     {
         cout << "Date of birth: ";
         cin >> birth;
-        cout << "Date of death: ";
-        cin >> death;
-        if(birth < death)
+        cout << "Is the person still alive?\nY/N:";
+        cin >> yesOrNo;
+        if(yesOrNo == "N" || yesOrNo == "n")
         {
-            breaker = true;
+            cout << "Date of death: ";
+            cin >> death;
+            if(birth < death)
+            {
+                breaker = true;
+            }
+            else
+            {
+                cout << "You cant be dead before you're born, please try again." << endl;
+            }
         }
         else
         {
-            cout << "You cant be dead before you're born, please try again." << endl;
+            death = "Alive";
+            breaker = true;
         }
-    }
-    Per.push_back(Person(fname, lname, sex, birth, death));
+   }
     d.personSave(fname,lname,sex,birth,death);
+    cout << "Did he create a computer?: \nY/N:";
+    cin >> yesOrNo;
+    if(yesOrNo == "Y" || yesOrNo == "y")
+    {
+           cout << "Please Select an option:\n(1) Computer already in Database\n(2)I would like to add a computer he is associated with" << endl;
+           d.personLoad(Per);
+           cout << "Here's a list of all computers in database:";
+           for(int i = 0; i < Comp.size();i++)
+           {
+               cout << Comp[i].getname() << ", " ;
+           }
+           cout << "\nPlease input the name of the computer: " << endl;
+           cin >> yesOrNo;
+           for(int i = 0; i < Comp.size();i++)
+           {
+               if(Comp[i].getname().find(yesOrNo) != string::npos)
+               {
+                   cId = Comp[i].getcid();
+               }
+           }
+           for(int j = 0;j < Per.size(); j++)
+           {
+               if(Per[j].getfname() == fname && Per[j].getlname() == lname)
+               {
+                   pId = Per[j].getpid();
+               }
+           }
+           d.idConnectSave(cId,pId);
+       }
 }
 
 void PersonWorkLayer::searchByName(vector<Person>& Per)
