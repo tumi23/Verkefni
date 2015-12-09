@@ -6,16 +6,20 @@ void Data::dbStarter()//Fall sem sér um að skilgreina gagnagrunns breytuna.
     QString dbName = "database.sqlite";
     db.setDatabaseName(dbName);
 }
-
+/*
+Her fyrir nedan koma inn breyturnar sem stilla query thannig ad haegt
+er ad saekja gogn ur gagnagrunninum og daela theim i vector af annadhvort
+Person structure eda Computers structure.
+ */
 void Data::personLoad(vector<Person>& p) //Fall sem sér um að lesa inn allt úr Person
 {                                        //töflunni í gagnagrunninum og setja í vector
     db.open();
     QSqlQuery query(db);
-    query.prepare("SELECT * FROM Person");//Sér um að gefa Query SQL skipun sem Query mun
-    p.clear();                            //því nota til að draga gögn úr gagnagrunninum.
+    query.prepare("SELECT * FROM Person");
+    p.clear();
     string p_id, firstName, lastName, sex, birthDay, death;
     query.exec();
-    while(query.next())//Lúpan sem sér um að draga hverja röð úr gagnagrunninum til að setja í vector.
+    while(query.next())
     {
         p_id = query.value("p_id").toString().toStdString();
         firstName = query.value("firstname").toString().toStdString();
@@ -83,8 +87,13 @@ void Data::computerSave(string name, string yearMade, string type, string doesIt
     query.bindValue(":doesItExist", tdoesItExist);
     query.exec();
 }
-
-string Data::creatorLoad(string c_id)
+/*
+Her fyrir nedan koma creatorLoad breyturnar sem sja um ad fylla vector
+af annadhvort nofnum i creatorLoad eda tolvum i creatorLoad2 sem skilar
+thvi svo til baka thannig ad haegt er ad skrifa ut hver bjo til tiltekna
+tolvu eda hvada tolvu akvedinn adili bjo til
+*/
+vector<string> Data::creatorLoad(string c_id)
 {
     db.open();
     QSqlQuery query(db);
@@ -95,15 +104,17 @@ string Data::creatorLoad(string c_id)
                   "ORDER BY Person.firstname");
     query.bindValue(":number", id);
     string firstname, lastname, fullname;
+    vector<string> name;
     query.exec();
     while(query.next())
     {
         firstname = query.value("firstname").toString().toStdString();
         lastname = query.value("lastname").toString().toStdString();
         fullname = firstname + " " + lastname;
+        name.push_back(fullname);
     }
     db.close();
-    return fullname;
+    return name;
 }
 
 vector<string> Data::creatorLoad2(string p_id)
@@ -127,8 +138,8 @@ vector<string> Data::creatorLoad2(string p_id)
     return name;
 }
 
-void Data::idConnectSave(string c_id, string p_id)
-{
+void Data::idConnectSave(string c_id, string p_id)//notast vid ad setja saman manneskju og tolvu, thad er ad segja
+{                                                 //tengja akvedna manneskju vid akvedna toflu.
     db.open();
     QSqlQuery query(db);
     QString tcid = QString::fromStdString(c_id);

@@ -1,4 +1,11 @@
 #include "objects.h"
+/*
+Hid agalega objects fallid sem er sma vont ad horfa a enn virkar thratt fyrir thad
+thad ad mestu leiti ser um allt sem tengist person og computure structure-inum
+medal annars overload << operatorinn og skila af ser tilteknum stokum sem
+mismunandi partar af forritun thurfa t.d. fyrsta nafn ur person vectornum
+eda eitthvad i tha attina.
+*/
 
 computer::computer(string c_id_, string name_, string yearMade_, string type_, string made_)
 {

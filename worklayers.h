@@ -19,12 +19,12 @@ struct PersonWorkLayer {
     void insert(Data& d, vector<Person>& Per,vector<computer>& Comp);
     void modifyConnection(Data& d, vector<Person>& Per,vector<computer>& Comp);
     bool NameChecker(string fname, string lname, vector<Person>& Per);
-    void searchByName(vector<Person>& Per);
-    void sortName(vector<Person>& Per);
-    void sortLastName(vector<Person>& Per);
-    void sortSex(vector<Person>& Per);
-    void sortBirth(vector<Person>& Per);
-    void sortDeath(vector<Person>& Per);
+    void searchByName(vector<Person>& Per,Data& d);
+    void sortName(vector<Person>& Per,Data& d);
+    void sortLastName(vector<Person>& Per,Data& d);
+    void sortSex(vector<Person>& Per,Data& d);
+    void sortBirth(vector<Person>& Per,Data& d);
+    void sortDeath(vector<Person>& Per,Data& d);
 };
 
 #endif // WORKLAYERS_H
