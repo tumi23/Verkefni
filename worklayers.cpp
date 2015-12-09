@@ -8,11 +8,9 @@ en ad hafa tvaer mismunandi skrar fyrir compworklayer og persworklayer, eini min
 skrainn er stor og mikil og thvi sma ljot ad sja en hun er samt eins vel sett upp
 og vid gatum imyndad okkur
 */
-void computerWorkLayer::insert(vector<computer>& Comp, Data& d)
+void computerWorkLayer::insert(Data& d)
 {
     string name, yearMade, type, doesItExist;
-    bool breaker;
-    breaker = false;
     cout << "Name: " << endl;
     cin >> name;
     cout << "Year made: " << endl;
@@ -31,8 +29,8 @@ void computerWorkLayer::searchByName(vector<computer>& Comp, Data& d)
     string name;
     cout << "Type in a name to search for: " << endl;
     cin >> name;
-    int size = Comp.size();
-    for(int i = 0; i < size; i++)
+    size_t size = Comp.size();
+    for(size_t i = 0; i < size; i++)
     {
         if(Comp[i].getname().find(name) != string::npos)
         {
@@ -41,7 +39,7 @@ void computerWorkLayer::searchByName(vector<computer>& Comp, Data& d)
             crtname.clear();       //og er thetta endurnotad i hverju falli sem tengist thvi ad skrifa a toflu ut.
             crtname = d.creatorLoad(cId);
             cout << "Creators: ";
-            for(unsigned int i = 0; i < crtname.size();i++)
+            for(size_t i = 0; i < crtname.size();i++)
             {
                 cout << crtname[i] << ", ";
             }
@@ -55,8 +53,7 @@ void computerWorkLayer::sortName(vector<computer>& Comp, Data& d)
     string cId;
     vector<string> crtname;
     vector<string> name;
-    int count = 0;
-    for(int i = 0; i < Comp.size(); i++)
+    for(size_t i = 0; i < Comp.size(); i++)
     {
         name.push_back(Comp[i].getname());
     }
@@ -72,7 +69,7 @@ void computerWorkLayer::sortName(vector<computer>& Comp, Data& d)
                 crtname.clear();
                 crtname = d.creatorLoad(cId);
                 cout << "Creators: ";
-                for(unsigned int i = 0; i < crtname.size();i++)
+                for(size_t i = 0; i < crtname.size();i++)
                 {
                     cout << crtname[i] << ", ";
                 }
@@ -87,8 +84,7 @@ void computerWorkLayer::sortYearMade(vector<computer>& Comp, Data& d)
     string cId;
     vector<string> crtname;
     vector<string> yearMade;
-    int count = 0;
-    for(int i = 0; i < Comp.size(); i++)
+    for(size_t i = 0; i < Comp.size(); i++)
     {
         yearMade.push_back(Comp[i].getyearMade());
     }
@@ -104,7 +100,7 @@ void computerWorkLayer::sortYearMade(vector<computer>& Comp, Data& d)
                 crtname.clear();
                 crtname = d.creatorLoad(cId);
                 cout << "Creators: ";
-                for(unsigned int i = 0; i < crtname.size();i++)
+                for(size_t i = 0; i < crtname.size();i++)
                 {
                     cout << crtname[i] << ", ";
                 }
@@ -119,8 +115,8 @@ void computerWorkLayer::sortType(vector<computer>& Comp, Data& d)
     string cId;
     vector<string> crtname;
     vector<string> type;
-    int count = 0;
-    for(int i = 0; i < Comp.size(); i++)
+    size_t count = 0;
+    for(size_t i = 0; i < Comp.size(); i++)
     {
         type.push_back(Comp[i].gettype());
     }
@@ -136,7 +132,7 @@ void computerWorkLayer::sortType(vector<computer>& Comp, Data& d)
                 crtname.clear();
                 crtname = d.creatorLoad(cId);
                 cout << "Creators: ";
-                for(unsigned int i = 0; i < crtname.size();i++)
+                for(size_t i = 0; i < crtname.size();i++)
                 {
                     cout << crtname[i] << ", ";
                 }
@@ -152,8 +148,8 @@ void computerWorkLayer::sortMade(vector<computer>& Comp, Data& d)
     string cId;
     vector<string> crtname;
     vector<string> made;
-    int count = 0;
-    for(int i = 0; i < Comp.size(); i++)
+    size_t count = 0;
+    for(size_t i = 0; i < Comp.size(); i++)
     {
         made.push_back(Comp[i].getmade());
     }
@@ -169,7 +165,7 @@ void computerWorkLayer::sortMade(vector<computer>& Comp, Data& d)
                 crtname.clear();
                 crtname = d.creatorLoad(cId);
                 cout << "Creators: ";
-                for(unsigned int i = 0; i < crtname.size();i++)
+                for(size_t i = 0; i < crtname.size();i++)
                 {
                     cout << crtname[i] << ", ";
                 }
@@ -184,7 +180,7 @@ bool PersonWorkLayer::NameChecker(string fname, string lname, vector<Person>& Pe
 {
     bool checker = true;
     string tfname, tlname;
-    for(int i = 0;i < Per.size();i++)
+    for(size_t i = 0;i < Per.size();i++)
     {
         tfname = Per[i].getfname();
         tlname = Per[i].getlname();
@@ -199,7 +195,7 @@ bool PersonWorkLayer::NameChecker(string fname, string lname, vector<Person>& Pe
     return checker;
 }
 
-void PersonWorkLayer::insert(Data& d, vector<Person>& Per, vector<computer>& Comp)
+void PersonWorkLayer::insert(Data& d, vector<Person>& Per)
 {
     string fname, lname, sex, birth, death,yesOrNo,cId,pId;
     bool breaker;
@@ -261,8 +257,8 @@ void PersonWorkLayer::searchByName(vector<Person>& Per,Data& d)
     vector<string> comname;
     cout << "Type in a name to search for: " << endl;
     cin >> name;
-    int size = Per.size();
-    for(int i = 0; i < size; i++)
+    size_t size = Per.size();
+    for(size_t i = 0; i < size; i++)
     {
         if(Per[i].getfname().find(name) != string::npos || Per[i].getlname().find(name) != string::npos)
         {
@@ -271,7 +267,7 @@ void PersonWorkLayer::searchByName(vector<Person>& Per,Data& d)
             comname.clear();
             comname = d.creatorLoad2(pId);
             cout << "Computers Created: ";
-            for(unsigned int i = 0; i < comname.size();i++)
+            for(size_t i = 0; i < comname.size();i++)
             {
                 cout << comname[i] << ", ";
             }
@@ -285,7 +281,7 @@ void PersonWorkLayer::sortName(vector<Person>& Per,Data& d)
     string pId;
     vector<string> comname;
     vector<string> firstname;
-    for(int i = 0; i < Per.size(); i++)
+    for(size_t i = 0; i < Per.size(); i++)
     {
         firstname.push_back(Per[i].getfname());
     }
@@ -301,7 +297,7 @@ void PersonWorkLayer::sortName(vector<Person>& Per,Data& d)
                 comname.clear();
                 comname = d.creatorLoad2(pId);
                 cout << "Computers Created: ";
-                for(unsigned int i = 0; i < comname.size();i++)
+                for(size_t i = 0; i < comname.size();i++)
                 {
                     cout << comname[i] << ", ";
                 }
@@ -316,8 +312,7 @@ void PersonWorkLayer::sortLastName(vector<Person>& Per,Data& d)
     string pId;
     vector<string> comname;
     vector<string> lastname;
-    int count = 0;
-    for(int i = 0; i < Per.size(); i++)
+    for(size_t i = 0; i < Per.size(); i++)
     {
         lastname.push_back(Per[i].getlname());
     }
@@ -333,7 +328,7 @@ void PersonWorkLayer::sortLastName(vector<Person>& Per,Data& d)
                 comname.clear();
                 comname = d.creatorLoad2(pId);
                 cout << "Computers Created: ";
-                for(unsigned int i = 0; i < comname.size();i++)
+                for(size_t i = 0; i < comname.size();i++)
                 {
                     cout << comname[i] << ", ";
                 }
@@ -348,8 +343,8 @@ void PersonWorkLayer::sortSex(vector<Person>& Per,Data& d)
     string pId;
     vector<string> comname;
     vector<string> sexes;
-    int count = 0;
-    for(int i = 0; i < Per.size(); i++)
+    size_t count = 0;
+    for(size_t i = 0; i < Per.size(); i++)
     {
         sexes.push_back(Per[i].getsex());
     }
@@ -365,7 +360,7 @@ void PersonWorkLayer::sortSex(vector<Person>& Per,Data& d)
                 comname.clear();
                 comname = d.creatorLoad2(pId);
                 cout << "Computers Created: ";
-                for(unsigned int i = 0; i < comname.size();i++)
+                for(size_t i = 0; i < comname.size();i++)
                 {
                     cout << comname[i] << ", ";
                 }
@@ -381,8 +376,8 @@ void PersonWorkLayer::sortBirth(vector<Person>& Per,Data& d)
     string pId;
     vector<string> comname;
     vector<string> births;
-    int count = 0;
-    for(int i = 0; i < Per.size(); i++)
+    size_t count = 0;
+    for(size_t i = 0; i < Per.size(); i++)
     {
         births.push_back(Per[i].getbirth());
     }
@@ -398,7 +393,7 @@ void PersonWorkLayer::sortBirth(vector<Person>& Per,Data& d)
                 comname.clear();
                 comname = d.creatorLoad2(pId);
                 cout << "Computers Created: ";
-                for(unsigned int i = 0; i < comname.size();i++)
+                for(size_t i = 0; i < comname.size();i++)
                 {
                     cout << comname[i] << ", ";
                 }
@@ -414,8 +409,8 @@ void PersonWorkLayer::sortDeath(vector<Person>& Per,Data& d)
     string pId;
     vector<string> comname;
     vector<string> deaths;
-    int count = 0;
-    for(int i = 0; i < Per.size(); i++)
+    size_t count = 0;
+    for(size_t i = 0; i < Per.size(); i++)
     {
         deaths.push_back(Per[i].getdeath());
     }
@@ -431,7 +426,7 @@ void PersonWorkLayer::sortDeath(vector<Person>& Per,Data& d)
                 comname.clear();
                 comname = d.creatorLoad2(pId);
                 cout << "Computers Created: ";
-                for(unsigned int i = 0; i < comname.size();i++)
+                for(size_t i = 0; i < comname.size();i++)
                 {
                     cout << comname[i] << ", ";
                 }
@@ -448,7 +443,7 @@ void PersonWorkLayer::modifyConnection(Data& d, vector<Person>& Per, vector<comp
    d.personLoad(Per);
 
    cout << "\nHere's a list of all Computers in database, type the name of the one you want to connect:";
-   for(int i = 0; i < Comp.size();i++)
+   for(size_t i = 0; i < Comp.size();i++)
    {
        cout << Comp[i].getname() << ", " ;
    }
@@ -456,7 +451,7 @@ void PersonWorkLayer::modifyConnection(Data& d, vector<Person>& Per, vector<comp
    cin >> tcom;
 
    cout << "Here's a list of all Person in database, type the name of the one you want to connect:\n";
-   for(int i = 0; i < Per.size();i++)
+   for(size_t i = 0; i < Per.size();i++)
    {
        cout << Per[i].getfname() << " " << Per[i].getlname() << ", ";
    }
@@ -466,14 +461,14 @@ void PersonWorkLayer::modifyConnection(Data& d, vector<Person>& Per, vector<comp
    cout << "Last Name: ";
    cin >> tlper;
 
-   for(int i = 0; i < Comp.size();i++)
+   for(size_t i = 0; i < Comp.size();i++)
    {
        if(Comp[i].getname() == tcom)
        {
            cId = Comp[i].getcid();
        }
    }
-   for(int j = 0;j < Per.size(); j++)
+   for(size_t j = 0;j < Per.size(); j++)
    {
        string fullname = Per[j].getfname() + " " + Per[j].getlname();
        string fullname2 = tfper + " " + tlper;

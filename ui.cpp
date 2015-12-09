@@ -45,7 +45,7 @@ bool UI::chooser(vector<Person>& Per, vector<computer>& Comp, Data& d, PersonWor
 
     printMenu(0);
     switch (getInput()) {
-        case '1': pom.insert(d,Per,Comp); break;
+        case '1': pom.insert(d,Per); break;
         case '2':
             for(size_t i = 0; i < Per.size(); i++)
             {
@@ -74,7 +74,7 @@ bool UI::chooser(vector<Person>& Per, vector<computer>& Comp, Data& d, PersonWor
                 default: cout << "Error wrong input!" << endl;
             }
             break;
-        case '5': com.insert(Comp, d); break;
+        case '5': com.insert(d); break;
         case '6':
             for(size_t i = 0; i < Comp.size(); i++)
             {
@@ -83,7 +83,7 @@ bool UI::chooser(vector<Person>& Per, vector<computer>& Comp, Data& d, PersonWor
                 crtname.clear();
                 crtname = d.creatorLoad(cId);
                 cout << "Creators: ";
-                for(unsigned int i = 0; i < crtname.size();i++)
+                for(size_t i = 0; i < crtname.size();i++)
                 {
                     cout << crtname[i] << ", ";
                 }
