@@ -17,6 +17,7 @@ struct computerWorkLayer {
 
 struct PersonWorkLayer {
     void insert(Data& d, vector<Person>& Per,vector<computer>& Comp);
+    void modifyConnection(Data& d, vector<Person>& Per,vector<computer>& Comp);
     bool NameChecker(string fname, string lname, vector<Person>& Per);
     void searchByName(vector<Person>& Per);
     void sortName(vector<Person>& Per);

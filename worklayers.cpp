@@ -205,35 +205,6 @@ void PersonWorkLayer::insert(Data& d, vector<Person>& Per, vector<computer>& Com
         }
    }
     d.personSave(fname,lname,sex,birth,death);
-    cout << "Did he create a computer?: \nY/N:";
-    cin >> yesOrNo;
-    if(yesOrNo == "Y" || yesOrNo == "y")
-    {
-           cout << "Please Select an option:\n(1) Computer already in Database\n(2)I would like to add a computer he is associated with" << endl;
-           d.personLoad(Per);
-           cout << "Here's a list of all computers in database:";
-           for(int i = 0; i < Comp.size();i++)
-           {
-               cout << Comp[i].getname() << ", " ;
-           }
-           cout << "\nPlease input the name of the computer: " << endl;
-           cin >> yesOrNo;
-           for(int i = 0; i < Comp.size();i++)
-           {
-               if(Comp[i].getname().find(yesOrNo) != string::npos)
-               {
-                   cId = Comp[i].getcid();
-               }
-           }
-           for(int j = 0;j < Per.size(); j++)
-           {
-               if(Per[j].getfname() == fname && Per[j].getlname() == lname)
-               {
-                   pId = Per[j].getpid();
-               }
-           }
-           d.idConnectSave(cId,pId);
-       }
 }
 
 void PersonWorkLayer::searchByName(vector<Person>& Per)
@@ -352,4 +323,48 @@ void PersonWorkLayer::sortDeath(vector<Person>& Per)
             }
         }
     }
+}
+
+void PersonWorkLayer::modifyConnection(Data& d, vector<Person>& Per, vector<computer>& Comp)
+{
+   string tcom,tfper,tlper,cId,pId;
+   d.personLoad(Per);
+
+   cout << "Here's a list of all Computers in database, type the name of the one you want to connect:";
+   for(int i = 0; i < Comp.size();i++)
+   {
+       cout << Comp[i].getname() << ", " ;
+   }
+   cout << "\nPlease input the name of the computer: " << endl;
+   cin >> tcom;
+
+   cout << "Here's a list of all Person in database, type the name of the one you want to connect:\n";
+   for(int i = 0; i < Per.size();i++)
+   {
+       cout << Per[i].getfname() << " " << Per[i].getlname() << ", ";
+   }
+   cout << "\nPlease input the name of the person to connect: " << endl;
+   cout << "First Name: ";
+   cin >> tfper;
+   cout << "Last Name: ";
+   cin >> tlper;
+
+   for(int i = 0; i < Comp.size();i++)
+   {
+       if(Comp[i].getname() == tcom)
+       {
+           cId = Comp[i].getcid();
+       }
+   }
+   for(int j = 0;j < Per.size(); j++)
+   {
+       string fullname = Per[j].getfname() + " " + Per[j].getlname();
+       string fullname2 = tfper + " " + tlper;
+       if(fullname == fullname2)
+       {
+           pId = Per[j].getpid();
+       }
+   }
+   d.idConnectSave(cId,pId);
+   cout << tcom << " and " << tfper << " " << tlper << " are now connected." << endl;
 }

@@ -40,7 +40,7 @@ int UI::GetPersonChoice(int srtornot)//Gives information on what the user wants 
 {
     int input;
     if(srtornot == 0)
-        cout << "\n(1)Add Person\n(2)Display Persons\n(3)Search by name\n(4)Sort\n!Anything else returns you back to choose a database!\n" << endl;
+        cout << "\n(1)Add Person\n(2)Display Persons\n(3)Search by name\n(4)Sort\n(5)Connect Computer and Person\n!Anything else returns you back to choose a database!\n" << endl;
     else if(srtornot == 1)
         cout << "Sort by:\n(1)First name\n(2)Last name\n(3)Sex\n(4)Date of birth\n(5)Date of death" << endl;
     cin >> input;
@@ -91,6 +91,9 @@ bool UI::personChooser(vector<Person>& Per,vector<computer>& Comp, Data& d,Perso
             default:
                 cout << "Wrong input!" << endl;
             }
+        case 5:
+            pom.modifyConnection(d,Per,Comp);
+            break;
         default:
             breaker = true;
         }
